@@ -1,0 +1,81 @@
+Echo_Co
+Project Echo
+
+Name, Email, Github
+Zishan Ahmed, ZishanAhmed93@gmail.com, ZishanAhmed93
+Liang Chen, liang.r.chen@gmail.com, lngchn
+Johnson Luu, Johnluu44@gmail.com, johnluu
+William Ventura, tritone567@gmail.com, wrventura
+
+
+     Echo is a gamified social media platform that uses a crowd sourced channel to distribute its content. Users can submit content in their posts, called an echo, readers can re-echo, a post to show appreciation for it, or simply ignore. Every user has an account level, which determines the strength of their echo; how many people their echo will reach. Users gain experience to level up based on their activity on the platform, mostly through creating posts that receive a lot of echos. Users posts are anonymous to the readers until they decide to echo it. After echoing the reader has the option to view the poster's profile. Ignoring it simply discards the post from the reader's inbox. The posts a reader receives will expire in 24 hours.
+     The original motivation behind Echo was seeing the contrast of emerging decentralized technologies through the block-chain and the centralized bubble inducing social media sites we have now. Content sharing sites like Instagram and twitter would be close competitors.
+
+
+User types:
+Users: Readers, content-creators, people interested in sharing and exploring thoughts, opinions and their work.
+
+Admins: Moderate users and their posts, potentially removing post, or banning users that break terms and agreements.
+
+
+AS A
+I WANT TO
+SO I CAN
+
+(new) User
+create an account
+keep record of my account activity
+User
+log in with a username and password
+securely gain access to my account
+User
+submit a post
+publish my content to the site
+User
+view my profile
+see my account record
+User
+like(reecho) a post in my inbox
+show appreciate/spread that post
+User
+ignore a post
+remove uninteresting content from my inbox
+
+User
+add/delete interest tags to my account
+curate content I receive
+User
+browse different interest boards
+Explore posts of those topics
+User
+View the echos i have liked
+Have a collection of posts
+User
+View the profile of users whose echos i have liked
+Explore more of their posts
+User
+Report a user for or post for abusive bahavior
+Get the admins attention to it
+User
+View my inbox
+See all the echos i receive
+
+Admin
+browse subject boards
+Flag unapproved content
+Admin
+access the list of all reported posts and users
+Determine if action is needed against them
+Admin
+Have access to the database of all users and posts
+Track growth and user base of the platform
+
+
+
+
+
+
+
+
+
+

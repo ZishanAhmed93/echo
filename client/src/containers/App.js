@@ -4,33 +4,49 @@ import {
   Route,
   Link
 } from 'react-router-dom'
-import NewPosts from './NewPosts'
-import ViewComments from './ViewComments'
-import ViewPosts from './ViewPosts'
+
+//components
+import Navbar from '../components/Navbar'
+
+//containers
+import NewEcho from './NewEcho'
+import ViewAllEchos from './ViewAllEchos'
+import ViewEcho from './ViewEcho'
+
+
+
+// get     /echos                -ViewAllEchos.js
+// post    /echos                -NewEcho.js
+
+// get     /echos/:id            -ViewEcho.js
+// post    /echos/:id/comments   -ViewEcho.js
+// put     /echos/comments/:id   -ViewEcho.js
+// delete  /echos/comments/:id   -ViewEcho.js
+
 
 const App = () => (
   <Router>
     <div>
-      <ul>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/NewPosts">NewPosts</Link></li>
-        <li><Link to="/ViewComments">ViewComments</Link></li>
-        <li><Link to="/ViewPosts">ViewPosts</Link></li>
-      </ul>
+
+      {Navbar()}
 
       <hr/>
 
       <Route exact path="/" component={Home}/>
-      <Route path="/NewPosts" component={NewPosts}/>
-      <Route path="/ViewPosts" component={ViewPosts}/>
-      <Route path="/ViewComments" component={ViewComments}/>
+      <Route path="/NewEcho" component={NewEcho}/>
+      <Route path="/ViewAllEchos" component={ViewAllEchos}/>
+      <Route path="/ViewEcho" component={ViewEcho}/>
+
     </div>
   </Router>
 )
 
+
+
 const Home = () => (
   <div>
     <h2>Home</h2>
+    <div>{NewPosts()}</div>
   </div>
 )
 

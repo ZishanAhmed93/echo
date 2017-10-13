@@ -1,10 +1,10 @@
 import React from 'react'
 
-const ViewPosts = () => (
+const ViewAllEchos = () => (
   <div>
     <h2>ViewPosts</h2>
   </div>
 
 )
 
-export default ViewPosts
+export default ViewAllEchos

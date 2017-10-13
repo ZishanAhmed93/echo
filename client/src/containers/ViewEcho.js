@@ -1,10 +1,10 @@
 import React from 'react'
 
-const ViewComments = () => (
+const ViewEcho = () => (
   <div>
     <h2>ViewComments</h2>
   </div>
 
 )
 
-export default ViewComments
+export default ViewEcho

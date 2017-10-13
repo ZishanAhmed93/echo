@@ -1,13 +1,13 @@
 const express = require('express');
 const models = require('../models');
 
-const PostsController = {
+const EchosController = {
   registerRouter() {
     const router = express.Router();
 
-    router.get('/', this.get);                            // get all posts
-    router.get('/:id', this.getById);                     // get a post
-    router.post('/', this.create);                        // create a post
+    router.get('/', this.get);                            // get all echos
+    router.get('/:id', this.getById);                     // get a echo
+    router.post('/', this.create);                        // create a echo
     router.post('/:id/comments', this.createComment);     // create a comment
     router.delete('/comments/:id', this.deleteComment);   // delete a comment
     router.put('/comments/:id', this.updateComment);      // update a comment
@@ -15,35 +15,35 @@ const PostsController = {
     return router;
   },
   get(req, res) {
-    models.Posts.findAll({include: [{model: models.Posts}]})
-      .then(posts => {
-        res.json(posts);
+    models.Echos.findAll({include: [{model: models.Comments}]})
+      .then(echos => {
+        res.json(echos);
       });
   },
   getById(req, res) {
-    models.Posts.findById(parseInt(req.params.id), {include: [{model: models.Comments}]} )
-      .then(post => {
-        res.json(post);
+    models.Echos.findById(parseInt(req.params.id), {include: [{model: models.Comments}]} )
+      .then(echo => {
+        res.json(echo);
       });
   },
   create(req, res) { 
     // This create a new poll but doesn't have the choices
-    models.Posts.create({
+    models.Echos.create({
       subject: req.body.subject
     })
-    .then(post => {
-      res.json(post);
+    .then(echo => {
+      res.json(echo);
     })
     .catch(err => {
       res.sendStatus(400);
     });
   },
   createComment(req, res) {
-    models.Posts.findById(parseInt(req.params.id))
-      .then(post => {
+    models.Echos.findById(parseInt(req.params.id))
+      .then(echo => {
         models.Comments.create({
           body: req.body.body,
-          PostId: post.id
+          EchoId: echo.id
         }).then(comment => res.json(comment));
       })
       .catch(err => {
@@ -78,4 +78,4 @@ const PostsController = {
   }
 };
 
-module.exports = PostsController.registerRouter();
+module.exports = EchosController.registerRouter();

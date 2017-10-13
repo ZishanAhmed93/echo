@@ -4,7 +4,7 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   Comments.associate = models => {
-    models.Comments.belongsTo(models.Posts);
+    models.Comments.belongsTo(models.Echos);
   }
 
   return Comments;

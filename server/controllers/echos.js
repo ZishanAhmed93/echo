@@ -53,7 +53,7 @@ const EchosController = {
   },
   deleteComment(req, res) {
     models.Comments.destroy({
-      where: {id: req.body.id}
+      where: {id: req.params.id}
     })
     .then(comment => {
       res.sendStatus(200) // OK status
@@ -67,7 +67,7 @@ const EchosController = {
     const newData = {
       body: req.body.body
     };
-    models.Comments.update(newData, {where: {id: req.body.id}})
+    models.Comments.update(newData, {where: {id: req.params.id}})
       .then(comment => {
         res.sendStatus(200); // OK status
       })

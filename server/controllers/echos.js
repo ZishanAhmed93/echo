@@ -42,7 +42,7 @@ const EchosController = {
     models.Echos.findById(parseInt(req.params.id))
       .then(echo => {
         models.Comments.create({
-          body: req.body.body,
+          reflection: req.body.reflection,
           EchoId: echo.id
         }).then(comment => res.json(comment));
       })
@@ -65,7 +65,7 @@ const EchosController = {
   },
   updateComment(req, res) {
     const newData = {
-      body: req.body.body
+      reflection: req.body.reflection
     };
     models.Comments.update(newData, {where: {id: req.params.id}})
       .then(comment => {

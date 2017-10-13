@@ -46,7 +46,7 @@ const App = () => (
 const Home = () => (
   <div>
     <h2>Home</h2>
-    <div>{NewPosts()}</div>
+    
   </div>
 )
 

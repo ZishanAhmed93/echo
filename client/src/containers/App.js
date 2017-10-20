@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {Component} from 'react'
 import {
   BrowserRouter as Router,
   Route,
@@ -24,12 +24,22 @@ import ViewEcho from './ViewEcho'
 // delete  /echos/comments/:id   -ViewEcho.js
 
 
-const App = () => (
+class App extends Component {
+
+ constructor(){
+  super();
+  this.state = {
+  }
+
+ } 
+
+
+render(){
+
+  return(
   <Router>
     <div>
-
       {Navbar()}
-
       <hr/>
 
       <Route exact path="/" component={Home}/>
@@ -39,8 +49,10 @@ const App = () => (
 
     </div>
   </Router>
-)
 
+    );
+}
+}
 
 
 const Home = () => (
@@ -50,4 +62,5 @@ const Home = () => (
   </div>
 )
 
-export default App
+
+export default App;

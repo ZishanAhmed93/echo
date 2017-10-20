@@ -12,23 +12,15 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Production Build
 app.use(express.static(`../client/build`));
 
-// Uncomment the following if you want to serve up static assets.
-// (You must create the public folder)
-/*
-app.use(express.static('./public'));
-*/
+const expressSession = require('express-session');
+const passport = require('./middlewares/authentication');
 
-// Uncomment the following if you want to use handlebars
-// on the backend. (You must create the views folder)
-/*
-const exphbs = require('express-handlebars');
-app.engine('handlebars', exphbs({
-  layoutsDir: './views/layouts',
-  defaultLayout: 'main',
-}));
-app.set('view engine', 'handlebars');
-app.set('views', `${__dirname}/views/`);
-*/
+// secret protects against fake cookie. 
+// In practice you want a random string to be your secret.
+app.use(expressSession(({secret: 'echoproject'})));
+app.use(passport.initialize());
+app.use(passport.session());
+
 
 // Load up all of the controllers
 const controllers = require('./controllers/index');

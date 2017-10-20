@@ -2,7 +2,8 @@ import React, {Component} from 'react'
 import {
   BrowserRouter as Router,
   Route,
-  Link
+  Link,
+  Switch
 } from 'react-router-dom'
 
 //components
@@ -25,40 +26,33 @@ import ViewEcho from './ViewEcho'
 
 
 class App extends Component {
+  constructor(){
+    super();
+    this.state = {
+    }
+  } 
 
- constructor(){
-  super();
-  this.state = {
-  }
-
- } 
-
-
-render(){
-
-  return(
-  <Router>
-    <div>
-      {Navbar()}
-      <hr/>
-
-      <Route exact path="/" component={Home}/>
-      <Route path="/NewEcho" component={NewEcho}/>
-      <Route path="/ViewAllEchos" component={ViewAllEchos}/>
-      <Route path="/ViewEcho" component={ViewEcho}/>
-
-    </div>
-  </Router>
-
+  render(){
+    return(
+      <Router>
+        <div>
+          <Navbar />
+          <Switch>
+            <Route exact path="/" component={Home}/>
+            <Route path="/newecho" component={NewEcho}/>
+            <Route path="/echos" component={ViewAllEchos}/>
+            <Route path="/echos/:id" component={ViewEcho}/>
+          </Switch>
+        </div>
+      </Router>
     );
-}
+  }
 }
 
 
 const Home = () => (
   <div>
     <h2>Home</h2>
-    
   </div>
 )
 

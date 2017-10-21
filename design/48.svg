@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47 (45396) - http://www.bohemiancoding.com/sketch -->
+    <title>48</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="logo-final" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="48" transform="translate(1.000000, 1.000000)" stroke-width="1.15" stroke="#BB1014">
+            <g id="outermost">
+                <path d="M16.8393147,46 C29.2756617,45.6942693 39.2632279,35.5170321 39.2632279,23.0070738 C39.2632279,10.3045246 28.9657772,0.00707384396 16.2632279,0.00707384396 C9.91206929,0.00707384396 4.16216332,2.5813425 2.84217094e-14,6.74338983" id="Oval-2" transform="translate(19.631614, 23.003537) rotate(180.000000) translate(-19.631614, -23.003537) "></path>
+            </g>
+            <g id="inside" transform="translate(5.750000, 0.000000)">
+                <path d="M40.25,23 C40.25,10.4895968 30.2617234,0.312080622 17.8247599,0.00704126263" id="Oval"></path>
+                <path d="M35.65,23 C35.65,12.8379606 27.4120394,4.6 17.25,4.6" id="Oval"></path>
+                <path d="M31.05,23 C31.05,15.3784705 24.8715295,9.2 17.25,9.2" id="Oval"></path>
+                <path d="M25.875,22.425 C25.875,17.661544 22.013456,13.8 17.25,13.8" id="Oval"></path>
+                <path d="M0.988983154,39.2609993 L17.25,23" id="Line" stroke-linecap="square"></path>
+            </g>
+        </g>
+    </g>
+</svg>

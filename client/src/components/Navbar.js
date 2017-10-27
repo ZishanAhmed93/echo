@@ -6,7 +6,6 @@ const Navbar = () => (
     <li><Link to="/">Home</Link></li>
     <li><Link to="/newecho">New Echo</Link></li>
     <li><Link to="/echos">View All Echos</Link></li>
-    <li><Link to="/echos/:id">View Echo</Link></li>
   </ul>
 )
 

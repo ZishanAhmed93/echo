@@ -13,6 +13,7 @@ import Navbar from '../components/Navbar'
 import NewEcho from './NewEcho'
 import ViewAllEchos from './ViewAllEchos'
 import ViewEcho from './ViewEcho'
+//import ViewComments from './ViewComments'
 
 
 
@@ -41,7 +42,8 @@ class App extends Component {
             <Route exact path="/" component={Home}/>
             <Route path="/newecho" component={NewEcho}/>
             <Route path="/echos" component={ViewAllEchos}/>
-            <Route path="/echos/:id" component={ViewEcho}/>
+            <Route path="/echo/:id" component={ViewEcho}/>
+            
           </Switch>
         </div>
       </Router>

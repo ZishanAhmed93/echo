@@ -1,5 +1,10 @@
 import React, {Component} from 'react';
-
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Switch
+} from 'react-router-dom'
 
 class ViewAllEchos extends Component {
 
@@ -33,7 +38,8 @@ return(
   	LIST OF POSTS
     {this.state.echos.map(echo =>
     	<div key={echo.id}>
-    	{echo.id} : {echo.subject} </div>
+      <li><Link to={`echo/${echo.id}`}> {echo.id} : {echo.subject}</Link></li>
+    	 </div>
     	)}
   </div>
 )

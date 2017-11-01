@@ -13,6 +13,9 @@ import Navbar from '../components/Navbar'
 import NewEcho from './NewEcho'
 import ViewAllEchos from './ViewAllEchos'
 import ViewEcho from './ViewEcho'
+import Registration from './Registration'
+import LogIn from './LogIn'
+import Profile from './Profile'
 //import ViewComments from './ViewComments'
 
 
@@ -43,7 +46,9 @@ class App extends Component {
             <Route path="/newecho" component={NewEcho}/>
             <Route path="/echos" component={ViewAllEchos}/>
             <Route path="/echo/:id" component={ViewEcho}/>
-            
+            <Route path="/login" component={LogIn}/>
+            <Route path="/registration" component={Registration}/>
+            <Route path="/profile" component={Profile} />
           </Switch>
         </div>
       </Router>

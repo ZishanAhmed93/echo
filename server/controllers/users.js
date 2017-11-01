@@ -28,7 +28,7 @@ router.post('/register', (req, res) => {
       })
       .then(user => {
         req.login(user, () => {
-          res.redirect('/profile');
+          res.send(200);
         });
       });
     }

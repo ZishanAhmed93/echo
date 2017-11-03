@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt');
-const saltRounds = 15;
+const saltRounds = 12;
 
 module.exports = (sequelize, DataTypes) => {
   // define() takes a table name and a set of columns

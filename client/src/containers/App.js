@@ -2,7 +2,8 @@ import React, {Component} from 'react'
 import { BrowserRouter as Router, Route, Link, Switch, Redirect } from 'react-router-dom'
 
 import Navbar from '../components/Navbar'
-import Home from '../components/Home';
+import HomePage from '../components/HomePage';
+import DashboardPage from '../components/DashboardPage'
 import Footer from '../components/Footer';
 import Login from './Login';
 import Registration from './Registration';
@@ -31,7 +32,6 @@ function LoginOrRegisterRoute({component: Component, isAuthed, onAuthChange, ...
     />
   );
 }
-
 
 class App extends Component {
   constructor(){
@@ -69,9 +69,10 @@ class App extends Component {
         <div>
           <Navbar isAuthed={this.state.isAuthed} />
           <Switch>
-            <Route exact path="/" component={Home}/>
+            <Route exact path="/" component={HomePage}/>
             <LoginOrRegisterRoute isAuthed={this.state.isAuthed} onAuthChange={this.handleAuth} path="/login" component={Login} />
             <LoginOrRegisterRoute isAuthed={this.state.isAuthed} onAuthChange={this.handleAuth} path="/registration" component={Registration} />
+            <PrivateRoute isAuthed={this.state.isAuthed} path="/dashboard" component={DashboardPage}/>
             <PrivateRoute isAuthed={this.state.isAuthed} path="/echos" component={Echos} />
         {/* <Route path="/newecho" component={NewEcho}/>
             <Route path="/echo/:id" component={ViewEcho}/> */}

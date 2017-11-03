@@ -1,8 +1,29 @@
-import React, { PropTypes } from 'react';
+import React, { Components } from 'react';
 import { Link } from 'react-router-dom';
+import Form from 'react-validation/build/form';
+import Input from 'react-validation/build/input';
 //import { Card, CardText } from 'material-ui/Card';
 //import RaisedButton from 'material-ui/RaisedButton';
 //import TextField from 'material-ui/TextField';
+
+// import {required, email } from '../HelperFunctions/FormValidation'; 
+
+
+import validator from 'validator';
+
+const required = (value) => {
+  if (!value.toString().trim().length) {
+    // We can return string or jsx as the 'error' prop for the validated Component
+    return 'require';
+  }
+};
+ 
+const email = (value) => {
+  if (!validator.isEmail(value)) {
+    return `${value} is not a valid email.`
+  }
+};
+
 
 
 const SignUpForm = ({
@@ -68,34 +89,25 @@ const SignUpForm = ({
   </div>
   */
 
-  <form class="container" id="needs-validation"  action="/" onSubmit={handleSubmit}  novalidate >
-  <div class="row">
-    <div class="col-md-12 mb-3">
-      <label for="validationCustom01">UserName</label>
-      <input type="text" class="form-control" id="validationCustom01" name="username" placeholder="UserName" onChange={handleChange} value={user.username} required  />
-      <div class="invalid-feedback">
-        UserName Error
-      </div>
+  <Form className="container" id="needs-validation"  action="/" onSubmit={handleSubmit}  >
+  <div className="row">
+    <div className="col-md-12 mb-3">
+      <label htmlFor="validationCustom01">UserName</label>
+      <Input type="text" className="form-control" id="validationCustom01" name="username" placeholder="UserName" onChange={handleChange} value={user.username} validations={[required]} />
     </div>
     </div>
-    <div class="col-md-12 mb-3">
-      <label for="validationCustom02">Email</label>
-      <input type="text" class="form-control" id="validationCustom02" name="email" placeholder="Email" y onChange={handleChange} value={user.email} required />
-      <div class="invalid-feedback">
-        Email Error
-      </div>
+    <div className="col-md-12 mb-3">
+      <label htmlFor="validationCustom02">Email</label>
+      <Input type="text" className="form-control" id="validationCustom02" name="email" placeholder="Email" onChange={handleChange} value={user.email} validations={[required,email]}/>
     </div>
-  <div class="row">
-    <div class="col-md-12 mb-3">
-      <label for="validationCustom03">Password</label>
-      <input type="text" class="form-control" id="validationCustom03" name="password" placeholder="Password" onChange={handleChange} value={user.password} required />
-      <div class="invalid-feedback">
-        City Error
-      </div>
+  <div className="row">
+    <div className="col-md-12 mb-3">
+      <label htmlFor="validationCustom03">Password</label>
+      <Input type="text" className="form-control" id="validationCustom03" name="password" placeholder="Password" onChange={handleChange} value={user.password} validations={[required]} />
     </div>
   </div>
-  <button class="btn btn-primary" type="submit">Submit form</button>
-</form>
+  <button className="btn btn-primary" type="submit">Submit form</button>
+</Form>
 );
 
 //SignUpForm.propTypes = {

@@ -36,6 +36,10 @@ class Registration extends Component {
   handleSubmit(event) {
 
     event.preventDefault();
+
+    
+
+
     fetch("/register", {
       method: "post",
       headers: {
@@ -70,14 +74,14 @@ class Registration extends Component {
     .then(json => {
       console.log(json);
       this.setState({
-        errors:json.errors,
+        //errors:json.errors,
       })
       //console.log(this.state.errors)
     
 
     })
     .catch(err => {
-     console.log("ERROR MACHINE + 5" + err.status) 
+     console.log(err) 
     })
   }
 

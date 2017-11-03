@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import LogInForm from '../components/LogInForm'
 import {
   BrowserRouter as Router,
   Route,
@@ -7,50 +8,75 @@ import {
 } from 'react-router-dom';
 
 class LogIn extends Component {
-  constructor() {
-    super();
-    this.state = {username: '',
-                  email: '',
-                  password: '' ,
-                  
-
+  constructor(props) {
+    super(props);
+    this.state = {
+                  errors:{},
+                    user:
+                    { username: '',
+                      email: '',
+                      password: '' ,
+                    }
                   };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
-    this.setState({username: event.target.value,
-                  email: event.target.value ,
-                  password: event.target.value,
-                  
+
+    const field = event.target.name;
+    const user = this.state.user;
+    user[field] = event.target.value;
+
+    this.setState({
+      user                 
     });
   }
 
   handleSubmit(event) {
+
     event.preventDefault();
-    fetch(`/users:register`, {
+
+    
+
+
+    fetch("/login", {
       method: "post",
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
+      credentials: 'same-origin',
       // This is the body parameter
       body: JSON.stringify({
-        username: this.state.username ,
-        email:    this.state.email,
-        password: this.state.password ,
+        email:    this.state.user.email,
+        password: this.state.user.password ,
         
       })
     })
-    .then(res => res.json())
-    .then(json => console.log(json))
+    .then( res => {
+       if(res.status === 200){
+         this.setState({});
+       };
+})
     .catch(err => {
-      console.log(err.message);
+     console.log(err) 
     })
   }
 
+
   render() {
+    return (
+      <LogInForm
+        handleSubmit={this.handleSubmit}
+        handleChange={this.handleChange}
+        errors={this.state.errors}
+        user={this.state.user}
+      />
+    );
+  }
+
+  /*render() {
     return(
     <form onSubmit={this.handleSubmit}>
       <label>
@@ -67,7 +93,7 @@ class LogIn extends Component {
       <input type='submit' value="Submit" />
     </form>
     );
-  }
+  } */
 }
 
 export default LogIn;

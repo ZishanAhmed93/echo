@@ -4,11 +4,6 @@ const passport = require('../middlewares/authentication');
 
 const router = express.Router();
 
-router.get('/register', passport.redirectIfLoggedIn('/profile'), (req, res) => {
-  // Should redirect to register page
-  res.redirect('/');
-});
-
 router.post('/register', (req, res) => {
   models.Users.findOne({
     where: {
@@ -28,35 +23,31 @@ router.post('/register', (req, res) => {
       })
       .then(user => {
         req.login(user, () => {
-          res.send(200);
+          res.sendStatus(200);
         });
       });
     }
   });
 });
 
-router.get('/login', passport.redirectIfLoggedIn('/profile'), (req, res) => {
-  // Should redirect to login page
-  res.redirect('/');
-});
-
-router.post('/login', (req, res) => {
-  passport.authenticate('local', {
-    successRedirect: '/profile',
-    failureRedirect: '/login',
-  })(req, res);
+router.post('/login', passport.authenticate('local'), (req, res) => {
+  res.sendStatus(200);
 });
 
 router.get('/logout', (req, res) => {
   req.logout();
-  res.redirect('/login');
+  res.sendStatus(200);
 })
 
-// Only allow access to logged in users
-// passport.redirectIfNotLoggedIn can be used at application level 
-// by using router.use() at the top of the file.
-router.get('/profile', passport.redirectIfNotLoggedIn('/login'), (req, res) => {
-  res.send('Welcome to your profile');
-});
+router.get('/auth', (req, res) => {
+  // If user is logged in, then req.user returns the user object
+  if(req.user) {
+    res.sendStatus(200);
+  }
+  else {
+    res.sendStatus(401);
+  }
+}); 
+
 
 module.exports = router;

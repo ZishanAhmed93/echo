@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
-import './Home.css';
 
-class Home extends Component {
+import React, { Component } from 'react';
+import './HomePage.css';
+
+class HomePage extends Component {
   render() {
     return(
       <div className="jumbotron jumbotron-fluid m-0" id="home-background">
@@ -17,4 +18,4 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default HomePage;

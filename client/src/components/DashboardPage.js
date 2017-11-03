@@ -6,8 +6,8 @@ class DashboardPage extends Component {
   render() {
     return(
       <div className="container text-center" id="dashboard-content">
-        {ViewAllEchos}
-        <p>placeholder for new echo button</p>
+        <ViewAllEchos/>
+        <button id="newEcho">new echo button</button>
           
       </div>
     

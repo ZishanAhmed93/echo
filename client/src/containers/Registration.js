@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import SignUpForm from '../components/RegistrationForm'
 import {
   BrowserRouter as Router,
   Route,
@@ -7,28 +8,35 @@ import {
 } from 'react-router-dom';
 
 class Registration extends Component {
-  constructor() {
-    super();
-    this.state = {username: '',
-                  email: '',
-                  password: '' ,
-
+  constructor(props) {
+    super(props);
+    this.state = {
+                  errors:{},
+                    user:
+                    { username: '',
+                      email: '',
+                      password: '' ,
+                    }
                   };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
-    this.setState({username: event.target.value,
-                  email: event.target.value ,
-                  password: event.target.value,
-                  
+
+    const field = event.target.name;
+    const user = this.state.user;
+    user[field] = event.target.value;
+
+    this.setState({
+      user                 
     });
   }
 
   handleSubmit(event) {
+
     event.preventDefault();
-    fetch("users/register", {
+    fetch("/register", {
       method: "post",
       headers: {
         'Accept': 'application/json',
@@ -36,20 +44,56 @@ class Registration extends Component {
       },
       // This is the body parameter
       body: JSON.stringify({
-        username: this.state.username ,
-        email:    this.state.email,
-        password: this.state.password ,
+        username: this.state.user.username ,
+        email:    this.state.user.email,
+        password: this.state.user.password ,
         
       })
     })
-    .then(res => res.json())
-    .then(json => console.log(json))
+    .then( res => {
+       //if(res.status == 200){
+        //this.setState({ 
+        //errors: {} 
+        //});
+        //console.log(res.status);
+      //return;
+      //} else {
+        //this.setState({
+          //errors: {}
+        //});
+        console.log(res);
+        return res.json();
+      
+      //}
+})
+      
+    .then(json => {
+      console.log(json);
+      this.setState({
+        errors:json.errors,
+      })
+      //console.log(this.state.errors)
+    
+
+    })
     .catch(err => {
-      console.log(err.message);
+     console.log("ERROR MACHINE + 5" + err.status) 
     })
   }
 
+
   render() {
+    return (
+      <SignUpForm
+        handleSubmit={this.handleSubmit}
+        handleChange={this.handleChange}
+        errors={this.state.errors}
+        user={this.state.user}
+      />
+    );
+  }
+
+  /*render() {
     return(
     <form onSubmit={this.handleSubmit}>
       <label>
@@ -66,7 +110,7 @@ class Registration extends Component {
       <input type='submit' value="Submit" />
     </form>
     );
-  }
+  } */
 }
 
 export default Registration;

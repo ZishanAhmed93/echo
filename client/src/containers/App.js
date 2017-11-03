@@ -1,18 +1,13 @@
 import React, {Component} from 'react'
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Switch
-} from 'react-router-dom'
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 
-//components
 import Navbar from '../components/Navbar'
-
-//containers
+import Home from '../components/Home';
+import Footer from '../components/Footer';
 import NewEcho from './NewEcho'
 import ViewAllEchos from './ViewAllEchos'
 import ViewEcho from './ViewEcho'
+//<<<<<<< HEAD
 import Registration from './Registration'
 import LogIn from './LogIn'
 import Profile from './Profile'
@@ -28,6 +23,8 @@ import Profile from './Profile'
 // put     /echos/comments/:id   -ViewEcho.js
 // delete  /echos/comments/:id   -ViewEcho.js
 
+//=======
+//>>>>>>> 795e1f70693c119d87121700560660317795127b
 
 class App extends Component {
   constructor(){
@@ -46,22 +43,18 @@ class App extends Component {
             <Route path="/newecho" component={NewEcho}/>
             <Route path="/echos" component={ViewAllEchos}/>
             <Route path="/echo/:id" component={ViewEcho}/>
+
             <Route path="/login" component={LogIn}/>
             <Route path="/registration" component={Registration}/>
             <Route path="/profile" component={Profile} />
+=======
+>>>>>>> 795e1f70693c119d87121700560660317795127b
           </Switch>
+          <Footer />
         </div>
       </Router>
     );
   }
 }
-
-
-const Home = () => (
-  <div>
-    <h2>Home</h2>
-  </div>
-)
-
 
 export default App;

@@ -1,5 +1,18 @@
 # Echo
 
+
+![Alt text](drafting/sitemap.png?raw=true "SiteMap")
+
+![Alt text](drafting/wireframeLogin.png?raw=true "Login")
+![Alt text](drafting/wireframeDashboard.png?raw=true "Dashboard")
+![Alt text](drafting/wireframeInbox.png?raw=true "Inbox")
+![Alt text](drafting/wireframeTopTags.png?raw=true "Top Tags")
+![Alt text](drafting/wireframeProfile.png?raw=true "Profile")
+
+
+
+
+
 ## Instructions
 
 Deveopment Build:

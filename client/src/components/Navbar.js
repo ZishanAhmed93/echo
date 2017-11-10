@@ -15,17 +15,13 @@ class Navbar extends Component {
           <div className="navbar-nav">
             <Link to="/" className="nav-item nav-link active">Home</Link>
             <Link to="echos" className="nav-item nav-link" href="#">Echo</Link>
+            <Link to="login" className="nav-item nav-link" href="#">Login</Link>
+              
+
           </div>
-          <div className="btn-group ml-5" role="group">
-            <button id="navbarLoggedIn" type="button" className="btn btn-outline-info dropdown-toggle text-uppercase" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i className="fa fa-bars" aria-hidden="true"></i>
-            </button>
-            <div className="dropdown-menu dropdown-menu-right" id="navLoginButton" aria-labelledby="navbarLoggedIn">
-              <Link to="login" className="nav-item nav-link" href="#">Login</Link>
-              <Link to="registration" className="nav-item nav-link" href="#">registration</Link>
-            </div>
-          </div>
+          
         </div>
+
       </nav>
     );
   }

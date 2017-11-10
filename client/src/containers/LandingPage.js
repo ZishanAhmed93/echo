@@ -1,54 +1,91 @@
-import React, { Component } from 'react'
-import './LandingPage.css';
+import React, {Component} from 'react';
+import RegistrationForm from '../components/RegistrationForm'
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
-class LandingPage extends Component {
-  constructor() {
-    super();
+class Registration extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: {
+        email: '',
+        fullname: '',
+        username: '',
+        password: '' 
+      },
+      isLoggedIn: false
+    };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
+    event.preventDefault();
+    const field = event.target.name;
+    const user = this.state.user;
+    user[field] = event.target.value;
+    this.setState({
+      user                 
+    });
   }
 
   handleSubmit(event) {
+    event.preventDefault();
+    fetch("/register", {
+      method: "post",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      credentials: 'same-origin',
+      body: JSON.stringify({
+        email:    this.state.user.email,
+        fullname: this.state.user.fullname,
+        username: this.state.user.username ,
+        password: this.state.user.password ,
+      })
+    })
+    .then(res => {
+      if(res.status === 200) {
+        this.setState({isLoggedIn: true});
+      } else {
+        // Need to implement feedback as to why registration fails.
+      }
+    })
+    .catch(err => {
+     console.log(err.message); 
+    });
   }
 
   render() {
-    return(
-      <div className="jumbotron jumbotron-fluid m-0" id="LandingPage-background">
-        <div className="container " id="LandingPage-content">
-          <h3 className="">Sign up to project your voice</h3>
-					<br />
-						<form onSubmit={this.handleSubmit}>
-								<div class="form-group">
-						    <label for="email">Email</label>
-								<input type="email" class="form-control" id="email" />
-								</div>
+    let isLoggedIn = this.state.isLoggedIn;
+    console.log(isLoggedIn);
+    if(isLoggedIn) {
+      return(<Redirect to="/" />);
+    }
 
-								<div class="form-group">
-								<label for="fullName">Full Name</label>
-							  <input type="text" class="form-control" id="fullName"/>
-							  </div>
+    return (
 
-								<div class="form-group">
-								<label for="UserName">User name</label>
-								<input type="text" class="form-control" id="userName"/>
-								</div>
 
-								<div class="form-group">
-								<label for="pwd">Password</label>
-								<input type="password" class="form-control" id="pwd"/>
-								</div>
 
-								<button type="submit" class="btn btn-default" id="submit">Sign up</button>
-					</form>
-					<br />
-					<p id="agreement">
-						By signing up, you agree to our Terms & Private Policy.
-					</p>
-	    	</div>
-	  	</div>
+        <div className="jumbotron jumbotron-fluid m-0" id="home-background">
+        <div className="container text-center" id="home-content">
+          <h1 className="display-3">Welcome to Echo!</h1>
+          
+          <p className="lead text-left">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+          <p className="lead">
+            <RegistrationForm
+              handleSubmit={this.handleSubmit}
+              handleChange={this.handleChange}
+              user={this.state.user}
+            />
+          </p>
+        </div>
+      </div>
+
+ 
     );
   }
 }
 
-export default LandingPage;
+export default Registration;

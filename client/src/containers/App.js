@@ -2,13 +2,20 @@ import React, {Component} from 'react'
 import { BrowserRouter as Router, Route, Link, Switch, Redirect } from 'react-router-dom'
 
 import Navbar from '../components/Navbar'
-import HomePage from '../components/HomePage';
-import DashboardPage from '../components/DashboardPage'
 import Footer from '../components/Footer';
-import Registration from './Registration'
+
+import LandingPage from './LandingPage';
+import HomePage from './HomePage';
+import DashboardPage from './DashboardPage'
+//import ProfilePage from './ProfilePage'
+
+//import Registration from './Registration'
 import LogIn from './LogIn'
-import Profile from './Profile'
+
+
 import Echos from './Echos';
+
+
 // import NewEcho from './NewEcho';
 // import ViewEcho from './ViewEcho';
 
@@ -70,9 +77,14 @@ class App extends Component {
         <div>
           <Navbar isAuthed={this.state.isAuthed} />
           <Switch>
-            <Route exact path="/" component={HomePage}/>
+            <Route exact path="/" component={LandingPage}/>
+
             <LoginOrRegisterRoute isAuthed={this.state.isAuthed} onAuthChange={this.handleAuth} path="/login" component={LogIn} />
+            
+            {/*
             <LoginOrRegisterRoute isAuthed={this.state.isAuthed} onAuthChange={this.handleAuth} path="/registration" component={Registration} />
+            */}
+
             <PrivateRoute isAuthed={this.state.isAuthed} path="/dashboard" component={DashboardPage}/>
             <PrivateRoute isAuthed={this.state.isAuthed} path="/echos" component={Echos} />
         {/* <Route path="/newecho" component={NewEcho}/>

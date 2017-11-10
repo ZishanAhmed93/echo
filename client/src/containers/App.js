@@ -5,7 +5,7 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer';
 
 import LandingPage from './LandingPage';
-import HomePage from './HomePage';
+//import HomePage from './HomePage';
 import DashboardPage from './DashboardPage'
 //import ProfilePage from './ProfilePage'
 
@@ -80,16 +80,13 @@ class App extends Component {
         <div>
           <Navbar isAuthed={this.state.isAuthed} />
           <Switch>
+
             {isAuthed ? <Route exact path="/" component={DashboardPage} />
                       : <Route exact path="/" component={LandingPage} />
             }
+          
             <LoginOrRegisterRoute isAuthed={this.state.isAuthed} onAuthChange={this.handleAuth} path="/login" component={LogIn} />
             
-            {/*
-            <LoginOrRegisterRoute isAuthed={this.state.isAuthed} onAuthChange={this.handleAuth} path="/registration" component={Registration} />
-            */}
-
-            <PrivateRoute isAuthed={this.state.isAuthed} path="/dashboard" component={DashboardPage}/>
             <PrivateRoute isAuthed={this.state.isAuthed} path="/echos" component={Echos} />
         {/* <Route path="/newecho" component={NewEcho}/>
             <Route path="/echo/:id" component={ViewEcho}/> */}

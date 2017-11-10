@@ -79,6 +79,8 @@ class App extends Component {
         <div>
           <Navbar isAuthed={this.state.isAuthed} />
           <Switch>
+            
+            <Route isAuthed={this.state.isAuthed} exact path="/" component={DashboardPage}/>
             <Route exact path="/" component={LandingPage}/>
 
             <LoginOrRegisterRoute isAuthed={this.state.isAuthed} onAuthChange={this.handleAuth} path="/login" component={LogIn} />

@@ -74,13 +74,15 @@ class App extends Component {
   }
 
   render(){
+    let isAuthed = this.state.isAuthed;
     return(
       <Router>
         <div>
           <Navbar isAuthed={this.state.isAuthed} />
           <Switch>
-            <Route exact path="/" component={LandingPage}/>
-
+            {isAuthed ? <Route exact path="/" component={DashboardPage} />
+                      : <Route exact path="/" component={LandingPage} />
+            }
             <LoginOrRegisterRoute isAuthed={this.state.isAuthed} onAuthChange={this.handleAuth} path="/login" component={LogIn} />
             
             {/*

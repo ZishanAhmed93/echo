@@ -1,48 +1,27 @@
 # Echo
 
-```bash
-Route Map
-```
+
+##Route Map
 ![Alt text](drafting/routemap.png?raw=true "RouteMap")
 
 
-```bash
-Site Map
-```
+##Site Map
 ![Alt text](drafting/sitemap.png?raw=true "SiteMap")
 
-
-```bash
-Login
-```
+###Login
 ![Alt text](drafting/wireframeLogin.png?raw=true "Login")
 
-
-```bash
-Dashboard
-```
+###Dashboard
 ![Alt text](drafting/wireframeDashboard.png?raw=true "Dashboard")
 
-
-```bash
-Inbox
-```
+###Inbox
 ![Alt text](drafting/wireframeInbox.png?raw=true "Inbox")
 
-
-```bash
-Top Tags
-```
+###Top Tags
 ![Alt text](drafting/wireframeTopTags.png?raw=true "Top Tags")
 
-
-```bash
-Profile
-```
+###Profile
 ![Alt text](drafting/wireframeProfile.png?raw=true "Profile")
-
-
-
 
 
 ## Instructions

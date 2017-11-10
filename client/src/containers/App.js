@@ -1,21 +1,28 @@
-import React, {Component} from 'react'
-import { BrowserRouter as Router, Route, Link, Switch, Redirect } from 'react-router-dom'
+import React, {Component} from 'react';
+import { BrowserRouter as Router, Route, Link, Switch, Redirect } from 'react-router-dom';
 
-import Navbar from '../components/Navbar'
+import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
 import LandingPage from './LandingPage';
+import DashboardPage from './DashboardPage';
+
+
+//no longer needed
 //import HomePage from './HomePage';
-import DashboardPage from './DashboardPage'
-//import ProfilePage from './ProfilePage'
-
-
-
 //import Registration from './Registration'
+
+//things not implemented yet
+//import ProfilePage from './ProfilePage';
+//import TopEchosPage from './TopEchosPage';
+
+
+//login should load into navbar
 import LogIn from './LogIn'
 
-
+//should load into dashboard
 import Echos from './Echos';
+
 
 
 // import NewEcho from './NewEcho';

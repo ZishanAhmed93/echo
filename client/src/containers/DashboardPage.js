@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
-import './Dashboard.css';
-import ViewAllEchos from '../containers/ViewAllEchos'
+import './DashboardPage.css';
+import Echos from '../containers/Echos'
 
-class Dashboard extends Component {
+class DashboardPage extends Component {
   render() {
     return(
       <div className="container text-center" id="dashboard-content">
-        {ViewAllEchos}
+        <Echos />
+        <button id="newEcho">new echo button</button>
         <p>placeholder for new echo button</p>
-          
       </div>
     
     );
   }
 }
 
-export default Dashboard;
+export default DashboardPage;

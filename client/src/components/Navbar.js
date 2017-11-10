@@ -43,8 +43,13 @@ class Navbar extends Component {
           <div className="navbar-nav">
             <Link to="/" className="nav-item nav-link active">Home</Link>
             <Link to="echos" className="nav-item nav-link" href="#">Echo</Link>
+            <Link to="login" className="nav-item nav-link" href="#">Login</Link>
+              
+
           </div>
-          <div className="btn-group ml-5" role="group">
+{/*
+<<<<<<< HEAD
+        <div className="btn-group ml-5" role="group">
             <button id="navbarLoggedIn" type="button" className="btn btn-outline-info dropdown-toggle text-uppercase" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i className="fa fa-bars" aria-hidden="true"></i>
             </button>
@@ -61,7 +66,12 @@ class Navbar extends Component {
               )}              
             </div>
           </div>
+=======
+          
+>>>>>> 3b9443052ece86f7c47f22ff7d43a6d7f715649b
+*/}
         </div>
+
       </nav>
     );
   }

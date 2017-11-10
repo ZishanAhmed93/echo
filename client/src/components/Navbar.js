@@ -13,22 +13,14 @@ class Navbar extends Component {
 
     handleClick(event) {
     event.preventDefault();
-    fetch('/echos', {
-      method: "post",
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      // This is the body parameter
-      body: JSON.stringify({
-        subject: this.state.subject
-      })
-    })
-    .then(res => res.json())
-    .then(json => console.log(json))
-    .catch(err => {
-      console.log(err.message);
-    })
+    fetch('/logout/')
+    .then((res) => {res.json()
+     if(res.status === 200){
+        // this.setState({isLoggedIn: true});
+         this.props.onAuthChange(false);
+       }
+  
+    });
   }  
 
       render() {
@@ -40,13 +32,21 @@ class Navbar extends Component {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+         
+        {this.props.isAuthed? (
           <div className="navbar-nav">
             <Link to="/" className="nav-item nav-link active">Home</Link>
             <Link to="echos" className="nav-item nav-link" href="#">Echo</Link>
-            <Link to="login" className="nav-item nav-link" href="#">Login</Link>
-              
-
+            <a className="nav-item nav-link" href="#" onClick={this.handleClick}>LogOut</a>            
           </div>
+          ):(
+          <div className="navbar-nav">
+            <Link to="/" className="nav-item nav-link active">Home</Link>
+            <Link to="echos" className="nav-item nav-link" href="#">Echo</Link>
+            <Link to="login" className="nav-item nav-link" href="#">LogIn</Link>
+          </div>
+
+          )}
 {/*
 <<<<<<< HEAD
         <div className="btn-group ml-5" role="group">

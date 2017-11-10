@@ -4,9 +4,10 @@ const saltRounds = 12;
 module.exports = (sequelize, DataTypes) => {
   // define() takes a table name and a set of columns
   const Users = sequelize.define('Users', {
-    username: DataTypes.STRING,
     email: DataTypes.STRING,
-    hashed_password: DataTypes.STRING
+    fullname: DataTypes.STRING,
+    username: DataTypes.STRING,
+    hashed_password: DataTypes.STRING,
   });
 
   Users.associate = models => {

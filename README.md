@@ -1,16 +1,27 @@
 # Echo
 
 
+## Route Map
+![Alt text](drafting/routemap.png?raw=true "RouteMap")
+
+
+## Site Map
 ![Alt text](drafting/sitemap.png?raw=true "SiteMap")
 
+### Login
 ![Alt text](drafting/wireframeLogin.png?raw=true "Login")
+
+### Dashboard
 ![Alt text](drafting/wireframeDashboard.png?raw=true "Dashboard")
+
+### Inbox
 ![Alt text](drafting/wireframeInbox.png?raw=true "Inbox")
+
+### Top Tags
 ![Alt text](drafting/wireframeTopTags.png?raw=true "Top Tags")
+
+### Profile
 ![Alt text](drafting/wireframeProfile.png?raw=true "Profile")
-
-
-
 
 
 ## Instructions

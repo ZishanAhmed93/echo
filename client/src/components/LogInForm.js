@@ -2,12 +2,8 @@ import React, { Components } from 'react';
 import { Link } from 'react-router-dom';
 import Form from 'react-validation/build/form';
 import Input from 'react-validation/build/input';
-//import { Card, CardText } from 'material-ui/Card';
-//import RaisedButton from 'material-ui/RaisedButton';
-//import TextField from 'material-ui/TextField';
 
-// import {required, email } from '../HelperFunctions/FormValidation'; 
-
+import "./LogInForm.css";
 
 import validator from 'validator';
 
@@ -24,93 +20,31 @@ const email = (value) => {
   }
 };
 
-
-
 const logInForm = ({
   handleSubmit,
   handleChange,
   errors,
   user,
 }) => (
-  /*<div className="container">
-    <form action="/" onSubmit={handleSubmit}>
-      <h2 className="card-heading">Sign Up</h2>
-
-    {errors.summary && <p className="error-message">{errors.summary}</p>}
-
-        
-        
-        
-
-        <div> {errors.username}</div>
-      <div className="field-line">
-        UserName
-        <input type = "text"
-          floatingLabelText="UserName"
-          name="username"
-          errorText={errors.name}
-          onChange={handleChange}
-          value={user.username}
-        />
+  <div className="jumbotron jumboForm mb-0">
+    <Form className="container" id="needs-validation"  action="/" onSubmit={handleSubmit}  >
+      <div className="row">
+        <div className="col-6 mx-auto mt-5 mb-3">
+          <label htmlFor="validationCustom01">Email</label>
+          <Input type="text" className="form-control" id="validationCustom01" name="email" onChange={handleChange} value={user.email} validations={[required,email]}/>
+        </div>
       </div>
-
-      <div> {errors.email}</div>
-      <div className="field-line">
-        Email
-        <input type ="Text"
-          floatingLabelText="Email"
-          name="email"
-          errorText={errors.email}
-          onChange={handleChange}
-          value={user.email}
-        />
+      <div className="row">
+        <div className="col-6 mx-auto mb-3">
+          <label htmlFor="validationCustom04">Password</label>
+          <Input type="text" className="form-control" id="validationCustom04" name="password" onChange={handleChange} value={user.password} validations={[required]} />
+        </div>
       </div>
-
-
-      <div> {errors.password}</div>
-      <div className="field-line">
-      Password
-        <input type = "Text"
-          floatingLabelText="Password"
-          type="password"
-          name="password"
-          onChange={handleChange}
-          errorText={errors.password}
-          value={user.password}
-        />
+      <div className="row">
+        <button className="btn btn-primary mx-auto mb-5" type="submit">Submit</button>
       </div>
-
-      <div className="button-line">
-        <input type="submit" label="Create New Account" primary />
-      </div>
-
-      <div>Already have an account? <Link to={'/login'}>Log in</Link></div>
-    </form>
+    </Form>
   </div>
-  */
-
-  <Form className="container" id="needs-validation"  action="/" onSubmit={handleSubmit}  >
-  <div className="row">
-    <div className="col-md-12 mb-3">
-      <label htmlFor="validationCustom01">Email</label>
-      <Input type="text" className="form-control" id="validationCustom01" name="email" placeholder="Email" onChange={handleChange} value={user.email} validations={[required]} />
-    </div>
-    </div>
-    <div className="row">
-    <div className="col-md-12 mb-3">
-      <label htmlFor="validationCustom03">Password</label>
-      <Input type="text" className="form-control" id="validationCustom03" name="password" placeholder="Password" onChange={handleChange} value={user.password} validations={[required]} />
-    </div>
-  </div>
-  <button className="btn btn-primary" type="submit">Submit form</button>
-</Form>
 );
-
-//SignUpForm.propTypes = {
-  //handleSubmit: PropTypes.func.isRequired,
-  //handleChange: PropTypes.func.isRequired,
-  //errors: PropTypes.object.isRequired,
-  //user: PropTypes.object.isRequired
-//};
 
 export default logInForm;

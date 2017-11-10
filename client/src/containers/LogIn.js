@@ -1,29 +1,22 @@
 import React, {Component} from 'react';
 import LogInForm from '../components/LogInForm'
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Switch
-} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
 class LogIn extends Component {
   constructor(props) {
     super(props);
     this.state = {
-                  errors:{},
-                    user:
-                    { username: '',
-                      email: '',
-                      password: '' ,
-                    }
-                  };
+      user: { 
+        email: '',
+        password: '',
+      },
+      isLoggedIn: false
+    };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
-
     const field = event.target.name;
     const user = this.state.user;
     user[field] = event.target.value;
@@ -34,11 +27,7 @@ class LogIn extends Component {
   }
 
   handleSubmit(event) {
-
     event.preventDefault();
-
-    
-
 
     fetch("/login", {
       method: "post",
@@ -56,14 +45,16 @@ class LogIn extends Component {
     })
     .then( res => {
        if(res.status === 200){
-         this.setState({});
-       };
-})
+         this.setState({isLoggedIn: true});
+         this.props.onAuthChange(true);
+       } else {
+         // Need to implement feedback as to why registration fails.
+       }
+    })
     .catch(err => {
-     console.log(err) 
+      console.log(err) 
     })
   }
-
 
   render() {
     return (
@@ -75,25 +66,6 @@ class LogIn extends Component {
       />
     );
   }
-
-  /*render() {
-    return(
-    <form onSubmit={this.handleSubmit}>
-      <label>
-        username:
-        <input type='text' name="username" onChange={this.handleChange} />
-        <br/>
-        email:
-      <input type='text' name="email" onChange={this.handleChange} />
-      <br/>
-        password:
-        <input type='text' name="password" onChange={this.handleChange} />
-        </label>
-        <br/>
-      <input type='submit' value="Submit" />
-    </form>
-    );
-  } */
 }
 
 export default LogIn;

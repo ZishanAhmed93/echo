@@ -48,6 +48,7 @@ class Registration extends Component {
     .then(res => {
       if(res.status === 200) {
         this.setState({isLoggedIn: true});
+        this.props.onAuthChange(true);
       } else {
         // Need to implement feedback as to why registration fails.
       }

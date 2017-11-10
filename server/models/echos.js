@@ -5,7 +5,13 @@ module.exports = (sequelize, DataTypes) => {
 
   Echos.associate = models => {
     models.Echos.hasMany(models.Comments);
+    models.Echos.belongsTo(models.Users, {
+      foreignKey: 'UserId',
+      onDelete: 'cascade'
+    });
   }
+
+
 
   return Echos;
 };

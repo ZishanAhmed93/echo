@@ -4,7 +4,10 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   Comments.associate = models => {
-    models.Comments.belongsTo(models.Echos);
+    models.Comments.belongsTo(models.Echos, {
+      foreignKey: 'EchoId',
+      onDelete: 'cascade'
+    });
   }
 
   return Comments;

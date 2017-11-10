@@ -9,6 +9,10 @@ module.exports = (sequelize, DataTypes) => {
     hashed_password: DataTypes.STRING
   });
 
+  Users.associate = models => {
+    models.Users.hasMany(models.Echos);
+  }
+
   // It should check for existing user before creating.
   Users.beforeCreate(user =>
     new sequelize.Promise(resolve => {

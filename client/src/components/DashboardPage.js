@@ -7,7 +7,7 @@ class DashboardPage extends Component {
     return(
       <div className="container text-center" id="dashboard-content">
 
-        <ViewAllEchos/>
+        <Echos />
         <button id="newEcho">new echo button</button>
 
         {Echos}

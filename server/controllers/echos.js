@@ -8,7 +8,7 @@ const EchosController = {
     router.get('/', this.get);                            // get all echos
     router.get('/:id', this.getById);                     // get a echo
     router.post('/', this.create);                        // create a echo
-    router.get('/:id/comments', this.getComment);                // get all comments
+    router.get('/:id/comments', this.getComment);         // get all comments
     router.post('/:id/comments', this.createComment);     // create a comment
     router.delete('/comments/:id', this.deleteComment);   // delete a comment
     router.put('/comments/:id', this.updateComment);      // update a comment
@@ -16,22 +16,35 @@ const EchosController = {
     return router;
   },
   get(req, res) {
-    models.Echos.findAll({include: [{model: models.Comments}]})
+    // models.Echos.findAll({include: [{model: models.Comments}]})
+    //   .then(echos => {
+    //     res.json(echos);
+    //   });
+    models.Echos.findAll()
       .then(echos => {
         res.json(echos);
       });
   },
   getById(req, res) {
-    models.Echos.findById(parseInt(req.params.id), {include: [{model: models.Comments}]} )
+    // models.Echos.findById(parseInt(req.params.id), {include: [{model: models.Comments}]} )
+    //   .then(echo => {
+    //     res.json(echo);
+    //   });
+    models.Echos.findById(parseInt(req.params.id))
       .then(echo => {
         res.json(echo);
       });
   },
   create(req, res) { 
-    // This create a new poll but doesn't have the choices
-    models.Echos.create({
-      subject: req.body.subject
-    })
+    models.Echos.create(
+      {
+        UserId: req.body.userId,
+        subject: req.body.subject,
+      },
+      {
+        include: [models.Users]
+      }
+    )
     .then(echo => {
       res.json(echo);
     })

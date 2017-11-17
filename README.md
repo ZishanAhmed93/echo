@@ -2,7 +2,7 @@
 
 
 ## Route Map
-![Alt text](drafting/routemap.png?raw=true "RouteMap")
+![Alt text](drafting/routermap.png?raw=true "RouteMap")
 
 
 ## Site Map

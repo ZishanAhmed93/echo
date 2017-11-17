@@ -30,7 +30,8 @@ const EchosController = {
   create(req, res) { 
     // This create a new poll but doesn't have the choices
     models.Echos.create({
-      subject: req.body.subject
+      subject: req.body.subject,
+      userId: req.body.userId
     })
     .then(echo => {
       res.json(echo);

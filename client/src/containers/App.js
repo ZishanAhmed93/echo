@@ -7,26 +7,24 @@ import Footer from '../components/Footer';
 import LandingPage from './LandingPage';
 import DashboardPage from './DashboardPage';
 
-
-//no longer needed
-//import HomePage from './HomePage';
-//import Registration from './Registration'
-
-//things not implemented yet
-//import ProfilePage from './ProfilePage';
-//import TopEchosPage from './TopEchosPage';
-
-
 //login should load into navbar
 import LogIn from './LogIn'
 
 //should load into dashboard
 import Echos from './Echos';
 
+import NewEcho from './NewEcho';
+import ViewEcho from './ViewEcho';
 
 
-// import NewEcho from './NewEcho';
-// import ViewEcho from './ViewEcho';
+//no longer needed
+//import HomePage from './HomePage';
+//import Registration from './Registration'
+//things not implemented yet
+//import ProfilePage from './ProfilePage';
+//import TopEchosPage from './TopEchosPage';
+
+
 
 function PrivateRoute({component: Component, isAuthed, ...rest}) {
   return(
@@ -95,8 +93,9 @@ class App extends Component {
             <LoginOrRegisterRoute isAuthed={this.state.isAuthed} onAuthChange={this.handleAuth} path="/login" component={LogIn} />
             
             <PrivateRoute isAuthed={this.state.isAuthed} path="/echos" component={Echos} />
-        {/* <Route path="/newecho" component={NewEcho}/>
-            <Route path="/echo/:id" component={ViewEcho}/> */}
+            <Route path="/newecho" component={NewEcho}/>
+            <Route path="/echo/:id" component={ViewEcho}/>
+
           </Switch>
           <Footer />
         </div>

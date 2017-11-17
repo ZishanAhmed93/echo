@@ -3,17 +3,17 @@ module.exports = (sequelize, DataTypes) => {
 
   Rechos.associate = models => {
     models.Rechos.belongsTo(models.Users, {
-      foreignKey: 'SenderId',
+      foreignKey: { name: 'SenderId', allowNull: false },
       as: 'SentEchos',
     });
 
     models.Rechos.belongsTo(models.Users, {
-      foreignKey: 'ReceiverId',
+      foreignKey: { name: 'ReceiverId', allowNull: false },
       as: 'ReceivedEchos',
     });
 
     models.Rechos.belongsTo(models.Echos, {
-      foreignKey: 'EchoId',
+      foreignKey: { name: 'EchoId', allowNull: false },
     });
   }
 

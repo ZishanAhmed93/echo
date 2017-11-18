@@ -17,22 +17,27 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  models.Rechos.create(
-    {
-      EchoId: req.body.echoId,
-      SenderId: req.body.senderId,
-      ReceiverId: req.body.receiverId,
-    },
-    {
-      include: [ { model: models.Echos }, { model: models.Users } ]
-    }
-  )
-  .then(recho => {
-    res.json(recho);
-  })
-  .catch(err => {
+  // Prevent sender from sending Echo to himself
+  if(req.body.senderId === req.body.receiverId) {
     res.sendStatus(400);
-  });
+  } else { 
+    models.Rechos.create(
+      {
+        EchoId: req.body.echoId,
+        SenderId: req.body.senderId,
+        ReceiverId: req.body.receiverId,
+      },
+      {
+        include: [ { model: models.Echos }, { model: models.Users, as: 'SentEchos' }, { model: models.Users, as: 'ReceivedEchos' } ]
+      }
+    )
+    .then(recho => {
+      res.json(recho);
+    })
+    .catch(err => {
+      res.sendStatus(400);
+    });
+  }
 });
 
 module.exports = router;

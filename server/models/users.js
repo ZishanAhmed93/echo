@@ -8,8 +8,8 @@ module.exports = (sequelize, DataTypes) => {
     fullname: DataTypes.STRING,
     username: DataTypes.STRING,
     hashed_password: DataTypes.STRING,
-    //level: DataTypes.INTEGER,
-    //experience: DataTypes.INTEGER,
+    level: DataTypes.INTEGER,
+    experience: DataTypes.INTEGER,
   });
 
   Users.associate = models => {

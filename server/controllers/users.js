@@ -21,6 +21,8 @@ router.post('/register', (req, res) => {
         fullname: req.body.fullname,
         username: req.body.username,
         hashed_password: req.body.password,
+        level: 1,
+        experience: 0,
       })
       .then(user => {
         req.login(user, () => {

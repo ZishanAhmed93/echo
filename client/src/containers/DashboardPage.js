@@ -7,8 +7,8 @@ class DashboardPage extends Component {
     return(
       <div className="container text-center" id="dashboard-content">
         <Echos />
-        <button id="newEcho">new echo button</button>
-        <p>placeholder for new echo button</p>
+        <a href="http://localhost:3000/NewEcho" id="newEcho">new echo button</a>
+        
       </div>
     
     );

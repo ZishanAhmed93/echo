@@ -38,8 +38,7 @@ router.post('/login', passport.authenticate('local'), (req, res) => {
 router.get('/logout', (req, res) => {
   req.logout();
   res.sendStatus(200);
-  console.log("LOGGEDOUT")
-})
+});
 
 router.get('/auth', (req, res) => {
   // If user is logged in, then req.user returns the user object
@@ -49,7 +48,17 @@ router.get('/auth', (req, res) => {
   else {
     res.sendStatus(401);
   }
-}); 
+});
+
+router.get('/user', (req, res) => {
+  //if user is logged in send user's id, otherwise send unauthorized
+  if(req.user) {
+    res.json(req.user.id);
+  }
+  else{
+    res.sendStatus(401);
+  }
+}) 
 
 
 module.exports = router;

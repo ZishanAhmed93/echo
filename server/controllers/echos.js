@@ -1,6 +1,8 @@
 const express = require('express');
 const models = require('../models');
 
+const passport = require('../middlewares/authentication');
+
 const EchosController = {
   registerRouter() {
     const router = express.Router();
@@ -20,10 +22,12 @@ const EchosController = {
     //   .then(echos => {
     //     res.json(echos);
     //   });
-    models.Echos.findAll()
-      .then(echos => {
-        res.json(echos);
-      });
+    models.Echos.findAll({
+      where: {UserId: req.user.id}
+    })
+    .then(echos => {
+      res.json(echos);
+    });
   },
   getById(req, res) {
     // models.Echos.findById(parseInt(req.params.id), {include: [{model: models.Comments}]} )

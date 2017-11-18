@@ -3,10 +3,22 @@ const router = express.Router();
 const models = require('../models');
 
 router.get('/', (req, res) => {
-  models.Rechos.findAll({include: [ { model: models.Users, as: 'SentEchos' }, { model: models.Users, as: 'ReceivedEchos' }, { model: models.Echos } ]})
-    .then(rechos => {
-      res.json(rechos);
-    });  
+  models.Rechos.findAll(
+    // There is a bug with include where it fetches all Echos with the same EchoId, 
+    // instead of just matching where condition.
+    // {
+    //   include: [ { model: models.Users, as: 'SentEchos' }, 
+    //              { model: models.Users, as: 'ReceivedEchos' }, 
+    //              { model: models.Echos } 
+    //            ]
+    // },
+    {
+      where: {ReceiverId: req.user.id}
+    }
+  )
+  .then(rechos => {
+    res.json(rechos);
+  });  
 });
 
 router.get('/:id', (req, res) => {

@@ -21,7 +21,7 @@ import ViewEcho from './ViewEcho';
 //import HomePage from './HomePage';
 //import Registration from './Registration'
 //things not implemented yet
-//import ProfilePage from './ProfilePage';
+import ProfilePage from './ProfilePage';
 //import TopEchosPage from './TopEchosPage';
 
 
@@ -95,7 +95,7 @@ class App extends Component {
             <PrivateRoute isAuthed={this.state.isAuthed} path="/echos" component={Echos} />
             <Route path="/newecho" component={NewEcho}/>
             <Route path="/echo/:id" component={ViewEcho}/>
-
+						<Route path="/profilepage" component={ProfilePage}/>
           </Switch>
           <Footer />
         </div>

@@ -6,22 +6,19 @@ const passport = require('../middlewares/authentication');
 const RechosAlgorithm = require('../middlewares/rechosAlgorithm');
 
 router.get('/', (req, res) => {
-  models.Rechos.findAll(
-    // There is a bug with include where it fetches all Echos with the same EchoId, 
-    // instead of just matching where condition.
-    // {
-    //   include: [ { model: models.Users, as: 'SentEchos' }, 
-    //              { model: models.Users, as: 'ReceivedEchos' }, 
-    //              { model: models.Echos } 
-    //            ]
-    // },
-    {
-      where: {ReceiverId: req.user.id}
-    }
-  )
-  .then(rechos => {
-    res.json(rechos);
-  });  
+  if(req.user) {
+    models.Rechos.findAll(
+      {
+        where: {ReceiverId: req.user.id},
+        include: [ 
+          { model: models.Echos }
+        ]
+      }
+    )
+    .then(rechos => {
+      res.json(rechos);
+    }); 
+  } 
 });
 
 // Get Rechos by its primary key

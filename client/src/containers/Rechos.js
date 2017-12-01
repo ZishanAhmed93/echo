@@ -29,7 +29,7 @@ class Rechos extends Component {
         RECHOS
         {this.state.rechos.map(recho =>
           <div key={recho.id}>
-          <li><Link to={`echo/${recho.EchoId}`}>{recho.EchoId}</Link></li>
+            <li>{recho.Echo.subject}</li>
            </div>
           )}
       </div>

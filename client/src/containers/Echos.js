@@ -9,24 +9,12 @@ class Echos extends Component {
       echos:[]}
   }
 
-
-
   componentDidMount(){
-    // fetch('/user', {
-    //   method: "get",
-    //   headers: {
-    //     'Accept': 'application/json',
-    //     'Concent-Type': 'application/json'
-    //   },
-    //   credentials: 'same-origin',
-    // })
-    // .then( (res) => res.json() )
-    //   .then((userId) => this.setState({userId: userId}));
-
     fetch('/echos',{
       headers: {
-        'Accept' : 'application/json',
-        'Content-Type': 'application/json',
+        'Accept' : 'application.json',
+        'Content-type' : 'application.json',
+
       },
       credentials: 'same-origin',
     })

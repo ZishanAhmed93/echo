@@ -12,14 +12,16 @@ class RecievedEchos extends Component {
     .then((response) => response.json())
       .then((recivedEchos) => this.setState({recievedEchos})
     );
+
+    
   }
 
   render() {
     return(
       <div>
-        ECHOS
-        {this.state.echos.map(echo =>
-          <div key={echo.id}>
+        Inbox
+        {this.state.recievedEchos.map(recievedEcho =>
+          <div key={recievedEcho.id}>
           <li><Link to={`echo/${echo.id}`}> {echo.id} : {echo.subject}</Link></li>
            </div>
           )}

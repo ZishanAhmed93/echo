@@ -5,7 +5,6 @@ const models = require('../models');
 const passport = require('../middlewares/authentication');
 const RechosAlgorithm = require('../middlewares/rechosAlgorithm');
 
-// don't use this 'GET' routing
 router.get('/', (req, res) => {
   models.Rechos.findAll(
     // There is a bug with include where it fetches all Echos with the same EchoId, 
@@ -25,6 +24,7 @@ router.get('/', (req, res) => {
   });  
 });
 
+// Get Rechos by its primary key
 router.get('/:id', (req, res) => {
   models.Rechos.findById(parseInt(req.params.id), {include: [ { model: models.Users, as: 'SentEchos' }, { model: models.Users, as: 'ReceivedEchos' }, { model: models.Echos } ]})
     .then(recho => {

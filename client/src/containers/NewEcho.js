@@ -38,6 +38,7 @@ class NewEcho extends Component {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
+      credentials: 'same-origin',
       // This is the body parameter
       body: JSON.stringify({
         subject: this.state.subject,

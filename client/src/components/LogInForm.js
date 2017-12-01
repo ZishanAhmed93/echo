@@ -26,25 +26,23 @@ const logInForm = ({
   errors,
   user,
 }) => (
-  <div className="jumbotron jumboForm mb-0">
-    <Form className="container" id="needs-validation"  action="/" onSubmit={handleSubmit}  >
-      <div className="row">
-        <div className="col-6 mx-auto mt-5 mb-3">
-          <label htmlFor="validationCustom01">Email</label>
-          <Input type="text" className="form-control" id="validationCustom01" name="email" onChange={handleChange} value={user.email} validations={[required,email]}/>
-        </div>
-      </div>
-      <div className="row">
-        <div className="col-6 mx-auto mb-3">
-          <label htmlFor="validationCustom04">Password</label>
-          <Input type="text" className="form-control" id="validationCustom04" name="password" onChange={handleChange} value={user.password} validations={[required]} />
-        </div>
-      </div>
-      <div className="row">
-        <button className="btn btn-primary mx-auto mb-5" type="submit">Submit</button>
-      </div>
+//  <div className="jumbotron jumboForm mb-0">
+    <Form className="form-inline" id="needs-validation"  action="/" onSubmit={handleSubmit}  >
+      <span className="row">
+        
+          <Input type="text" className="form-control" id="validationCustom01" name="email" placeholder = "Email Address" onChange={handleChange} value={user.email} validations={[required,email]}/>
+        
+      </span>
+      <span className="row">
+        
+          <Input type="text" className="form-control" id="validationCustom04" name="password" placeholder = "Password" onChange={handleChange} value={user.password} validations={[required]} />
+        
+      </span>
+      <span className="row">
+        <button className="btn btn-primary" type="submit">Submit</button>
+      </span>
     </Form>
-  </div>
+  //</div>
 );
 
 export default logInForm;

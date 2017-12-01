@@ -1,3 +1,18 @@
 .jumboForm {
   height: 28em;
 }
+
+
+.form-horizontal{
+
+	padding: 15px;
+	padding-bottom: 10px;
+
+	
+}
+.dropdown-menu{
+
+	padding: 15px;
+	padding-bottom: 10px;
+	width: 300px;
+}

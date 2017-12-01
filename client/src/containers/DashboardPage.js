@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './DashboardPage.css';
 import Echos from './Echos'
 import NewEcho from "./NewEcho"
+import RecievedEchos from './RecievedEchos'
 
 class DashboardPage extends Component {
   render() {
@@ -9,7 +10,7 @@ class DashboardPage extends Component {
       <div className="container text-center" id="dashboard-content">
         <NewEcho />
 
-        
+        <RecievedEchos />
         
       </div>
     

@@ -4,30 +4,39 @@ import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 class RecievedEchos extends Component {
   constructor() {
     super();
-    this.state = {recievedEchos:[]}
+    this.state = {
+      userId: '',
+      rechos:[]
+    }
   }
 
   componentDidMount(){
-    fetch(`/rechos/${this.props.match.params.id}`)
+    fetch('/rechos', {
+      method : 'get',
+      headers: {
+        'Accept' : 'application.json',
+        'Content-type' : 'application/json'
+      },
+      credentials: 'same-origin',
+    })
     .then((response) => response.json())
-      .then((recivedEchos) => this.setState({recievedEchos})
-    );
-
-    
+      .then((rechos) => this.setState({rechos}))
   }
 
   render() {
     return(
       <div>
         Inbox
-        {this.state.recievedEchos.map(recievedEcho =>
-          <div key={recievedEcho.id}>
-          <li><Link to={`echo/${echo.id}`}> {echo.id} : {echo.subject}</Link></li>
+        {this.state.rechos.map(recho =>
+          <div key={recho.id}>
+          <li><Link to={`rechos/${recho.id}`}> {recho.id}</Link></li>
            </div>
           )}
       </div>
     )
   }
+
+
 }
 
 export default RecievedEchos

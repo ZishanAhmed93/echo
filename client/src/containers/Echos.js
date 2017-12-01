@@ -4,14 +4,35 @@ import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 class Echos extends Component {
   constructor() {
     super();
-    this.state = {echos:[]}
+    this.state = {
+      userId: '',
+      echos:[]}
   }
 
+
+
   componentDidMount(){
-    fetch('/echos')
+    // fetch('/user', {
+    //   method: "get",
+    //   headers: {
+    //     'Accept': 'application/json',
+    //     'Concent-Type': 'application/json'
+    //   },
+    //   credentials: 'same-origin',
+    // })
+    // .then( (res) => res.json() )
+    //   .then((userId) => this.setState({userId: userId}));
+
+    fetch('/echos',{
+      headers: {
+        'Accept' : 'application/json',
+        'Content-Type': 'application/json',
+      },
+      credentials: 'same-origin',
+    })
     .then((response) => response.json())
-    	.then((echos) => this.setState({echos})
-    );
+      .then((echos) => this.setState({echos}))
+
   }
 
   render() {

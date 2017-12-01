@@ -92,7 +92,7 @@ class App extends Component {
           
             <LoginOrRegisterRoute isAuthed={this.state.isAuthed} onAuthChange={this.handleAuth} path="/login" component={LogIn} />
             
-            <PrivateRoute isAuthed={this.state.isAuthed} path="/echos" component={Echos} />
+            <Route path="/echos" component={Echos} />
             <Route path="/newecho" component={NewEcho}/>
             <Route path="/echo/:id" component={ViewEcho}/>
 
@@ -105,3 +105,5 @@ class App extends Component {
 }
 
 export default App;
+
+// <PrivateRoute isAuthed={this.state.isAuthed} path="/echos" component={Echos} />

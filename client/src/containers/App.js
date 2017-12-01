@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { BrowserRouter as Router, Route, Link, Switch, Redirect } from 'react-router-dom';
 
-import Navbar from '../components/Navbar';
+import Navbar from './Navbar';
 import Footer from '../components/Footer';
 
 import LandingPage from './LandingPage';
@@ -105,3 +105,5 @@ class App extends Component {
 }
 
 export default App;
+
+// <PrivateRoute isAuthed={this.state.isAuthed} path="/echos" component={Echos} />

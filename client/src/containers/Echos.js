@@ -4,7 +4,9 @@ import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 class Echos extends Component {
   constructor() {
     super();
-    this.state = {echos:[]}
+    this.state = {
+      userId: '',
+      echos:[]}
   }
 
   componentDidMount(){
@@ -12,12 +14,13 @@ class Echos extends Component {
       headers: {
         'Accept' : 'application.json',
         'Content-type' : 'application.json',
+
       },
       credentials: 'same-origin',
     })
     .then((response) => response.json())
-    	.then((echos) => this.setState({echos})
-    );
+      .then((echos) => this.setState({echos}))
+
   }
 
   render() {

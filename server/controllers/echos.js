@@ -41,7 +41,7 @@ const EchosController = {
       });
   },
   create(req, res) { 
-    if(req.user.id) {
+    if(req.user) {
       models.Echos.create(
         {
           UserId: req.user.id,

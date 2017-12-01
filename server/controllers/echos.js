@@ -41,22 +41,24 @@ const EchosController = {
       });
   },
   create(req, res) { 
-    models.Echos.create(
-      {
-        UserId: req.body.userId,
-        subject: req.body.subject,
-      },
-      {
-        include: [models.Users]
-      }
-    )
-    .then(echo => {
-      const echoId = echo.dataValues.id;
-      RechosAlgorithm(echoId, req.user.id, res);
-    })
-    .catch(err => {
-      res.sendStatus(400);
-    });
+    if(req.user.id) {
+      models.Echos.create(
+        {
+          UserId: req.user.id,
+          subject: req.body.subject,
+        },
+        {
+          include: [models.Users]
+        }
+      )
+      .then(echo => {
+        const echoId = echo.dataValues.id;
+        RechosAlgorithm(echoId, req.user.id, res);
+      })
+      .catch(err => {
+        res.sendStatus(400);
+      });
+    }
   },
   getComment(req, res) {
     models.Comments.findAll({where: {EchoId: req.params.id}})

@@ -2,13 +2,14 @@ const express = require('express');
 const models = require('../models');
 
 const passport = require('../middlewares/authentication');
+const RechosAlgorithm = require('../middlewares/rechosAlgorithm');
 
 const EchosController = {
   registerRouter() {
     const router = express.Router();
 
-    router.get('/', this.get);                            // get all echos
-    router.get('/:id', this.getById);                     // get a echo
+    router.get('/', this.get);                            // get all echos belongs to the login user
+    router.get('/:id', this.getById);                     // get a echo by echoId
     router.post('/', this.create);                        // create a echo
     router.get('/:id/comments', this.getComment);         // get all comments
     router.post('/:id/comments', this.createComment);     // create a comment
@@ -40,21 +41,24 @@ const EchosController = {
       });
   },
   create(req, res) { 
-    models.Echos.create(
-      {
-        UserId: req.body.userId,
-        subject: req.body.subject,
-      },
-      {
-        include: [models.Users]
-      }
-    )
-    .then(echo => {
-      res.json(echo);
-    })
-    .catch(err => {
-      res.sendStatus(400);
-    });
+    if(req.user.id) {
+      models.Echos.create(
+        {
+          UserId: req.user.id,
+          subject: req.body.subject,
+        },
+        {
+          include: [models.Users]
+        }
+      )
+      .then(echo => {
+        const echoId = echo.dataValues.id;
+        RechosAlgorithm(echoId, req.user.id, res);
+      })
+      .catch(err => {
+        res.sendStatus(400);
+      });
+    }
   },
   getComment(req, res) {
     models.Comments.findAll({where: {EchoId: req.params.id}})

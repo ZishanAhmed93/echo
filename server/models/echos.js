@@ -1,18 +1,20 @@
 module.exports = (sequelize, DataTypes) => {
   var Echos = sequelize.define('Echos', {
-    subject: DataTypes.STRING,
-    
+    subject: { type: DataTypes.STRING, allowNull: false },
+    echo_point: { type: DataTypes.INTEGER, defaultValue: 0 },
   });
 
   Echos.associate = models => {
-    models.Echos.hasMany(models.Comments);
     models.Echos.belongsTo(models.Users, {
-      foreignKey: 'userId',
+      foreignKey: { name: 'UserId', allowNull: false },
       onDelete: 'cascade'
     });
+
+    models.Echos.hasMany(models.Rechos, {
+      as: 'Echos',
+      foreignKey: 'EchoId',
+    });
   }
-
-
 
   return Echos;
 };

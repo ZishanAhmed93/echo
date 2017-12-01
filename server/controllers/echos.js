@@ -1,6 +1,8 @@
 const express = require('express');
 const models = require('../models');
 
+const passport = require('../middlewares/authentication');
+
 const EchosController = {
   registerRouter() {
     const router = express.Router();
@@ -16,23 +18,37 @@ const EchosController = {
     return router;
   },
   get(req, res) {
-    models.Echos.findAll({include: [{model: models.Comments}]})
-      .then(echos => {
-        res.json(echos);
-      });
+    // models.Echos.findAll({include: [{model: models.Comments}]})
+    //   .then(echos => {
+    //     res.json(echos);
+    //   });
+    models.Echos.findAll({
+      where: {UserId: req.user.id}
+    })
+    .then(echos => {
+      res.json(echos);
+    });
   },
   getById(req, res) {
-    models.Echos.findById(parseInt(req.params.id), {include: [{model: models.Comments}]} )
+    // models.Echos.findById(parseInt(req.params.id), {include: [{model: models.Comments}]} )
+    //   .then(echo => {
+    //     res.json(echo);
+    //   });
+    models.Echos.findById(parseInt(req.params.id))
       .then(echo => {
         res.json(echo);
       });
   },
   create(req, res) { 
-    // This create a new poll but doesn't have the choices
-    models.Echos.create({
-      subject: req.body.subject,
-      userId: req.body.userId
-    })
+    models.Echos.create(
+      {
+        UserId: req.body.userId,
+        subject: req.body.subject,
+      },
+      {
+        include: [models.Users]
+      }
+    )
     .then(echo => {
       res.json(echo);
     })

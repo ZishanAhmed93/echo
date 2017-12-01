@@ -9,7 +9,7 @@ class DashboardPage extends Component {
       <div className="container text-center" id="dashboard-content">
         <NewEcho />
 
-        <a href="http://localhost:3000/NewEcho" id="newEcho">new echo button</a>
+        
         
       </div>
     

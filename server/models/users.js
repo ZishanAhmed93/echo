@@ -10,6 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     hashed_password: { type: DataTypes.STRING, allowNull: false },
     level: { type: DataTypes.INTEGER, defaultValue: 0 },
     experience: { type: DataTypes.INTEGER, defaultValue: 0 },
+
   });
 
   Users.associate = models => {

@@ -4,11 +4,13 @@ import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 class Echos extends Component {
   constructor() {
     super();
-    this.state = {echos:[]}
+    this.state = {
+      rechos: [],
+    }
   }
 
-  componentDidMount(){
-    fetch('/echos',{
+  componentDidMount() {
+    fetch('/rechos',{
       headers: {
         'Accept' : 'application.json',
         'Content-type' : 'application.json',
@@ -16,17 +18,17 @@ class Echos extends Component {
       credentials: 'same-origin',
     })
     .then((response) => response.json())
-    	.then((echos) => this.setState({echos})
+    	.then((rechos) => this.setState({rechos})
     );
   }
 
   render() {
     return(
       <div>
-      	ECHOS
-        {this.state.echos.map(echo =>
-        	<div key={echo.id}>
-          <li><Link to={`echo/${echo.id}`}> {echo.id} : {echo.subject}</Link></li>
+      	RECHOS
+        {this.state.rechos.map(recho =>
+        	<div key={recho.id}>
+          <li><Link to={`echo/${recho.EchoId}`}>{recho.EchoId}</Link></li>
         	 </div>
         	)}
       </div>

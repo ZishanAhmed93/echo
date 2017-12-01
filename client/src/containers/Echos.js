@@ -8,7 +8,13 @@ class Echos extends Component {
   }
 
   componentDidMount(){
-    fetch('/echos')
+    fetch('/echos',{
+      headers: {
+        'Accept' : 'application.json',
+        'Content-type' : 'application.json',
+      },
+      credentials: 'same-origin',
+    })
     .then((response) => response.json())
     	.then((echos) => this.setState({echos})
     );

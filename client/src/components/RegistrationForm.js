@@ -2,8 +2,10 @@ import React, { Components } from 'react';
 import { Link } from 'react-router-dom';
 import Form from 'react-validation/build/form';
 import Input from 'react-validation/build/input';
+import './RegistrationForm.css';
 
 import validator from 'validator';
+
 
 const required = (value) => {
   if (!value.toString().trim().length) {
@@ -24,7 +26,7 @@ const SignUpForm = ({
   errors,
   user,
 }) => (
-  <div className="jumbotron p-2 mb-0">
+  <div className="jumbotron p-2 mb-0" id="RegistrationForm" >
     <Form className="container" id="needs-validation"  action="/" onSubmit={handleSubmit} >
     
           <label htmlFor="validationCustom01">Email</label>
@@ -39,7 +41,7 @@ const SignUpForm = ({
           <label htmlFor="validationCustom04">Password</label>
           <Input type="text" className="form-control" id="validationCustom04" name="password" onChange={handleChange} value={user.password} validations={[required]} />
     
-        <button className="btn btn-primary mx-auto mb-5" type="submit">Submit</button>
+        <button className="center btn btn-primary mx-auto mb-5 " type="submit">Sign up</button>
     
     </Form>
   </div>

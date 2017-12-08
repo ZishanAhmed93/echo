@@ -1,3 +1,13 @@
+*{
+  box-sizing: border-box;
+}
+
+body{
+  /*font-family: 'Josefin Sans', sans-serif;*/
+  font-family: 'Josefin Sans';
+  color: rgba(0,0,0, 0.87);
+}
+
 .App {
   text-align: center;
   color: red;
@@ -26,4 +36,61 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+#home-background{
+  background-color: #FDFDFD;
+}
+.jumbotron {
+ background-color: #FDFDFD; 
+}
+
+
+.tile{
+  background-color: #FFFFFF;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  padding: 16px;
+}
+
+.black87{
+  color: rgba(0,0,0, 0.87)!important;
+}
+
+.black54{
+  color: rgba(0,0,0, 0.54)!important;
+}
+
+.black38{
+  color: rgba(0,0,0, 0.38)!important;
+}
+
+.btn{
+  width: 90px !important;
+  height: 30px !important;
+  text-align: center !important;
+
+
+}
+
+.ctaButton, .btn-primary {
+  background-color: #BB1014 !important;
+  color: white !important;
+  border: none;
+}
+
+.button2{
+  border: solid 1px #BB1014;
+  color: #BB1014;
+  background-color: white;
+
+}
+
+body{
+  min-height: 100vh;
+}
+
+#footer{
+  /*align-items: flex-end;*/
+  position: absolute;
+  bottom: 0;
 }

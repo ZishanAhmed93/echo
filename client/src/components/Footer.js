@@ -5,8 +5,8 @@ import './Footer.css';
 class Footer extends React.Component {
   render() {
     return (
-      <div className="container-fluid text-center">
-        <div className="row navbar-light" id="footer">
+      <div className="container-fluid text-center" id="footer">
+        <div className="row navbar-light">
           <div className="col">
             <nav className="nav justify-content-center mt-4 footer-link">
               <Link to="/" className="nav-link">Home</Link>

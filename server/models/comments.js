@@ -8,6 +8,10 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'EchoId',
       onDelete: 'cascade'
     });
+
+    models.Comments.belongsTo(models.Users, {
+      foreignKey: 'UserId'
+    });
   }
 
   return Comments;

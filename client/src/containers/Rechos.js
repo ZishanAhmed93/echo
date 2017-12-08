@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import moment from "moment";
+import './Rechos.css';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 
 class Rechos extends Component {
@@ -76,10 +77,10 @@ class Rechos extends Component {
         
         {this.state.rechos.map(recho =>
           <div key={recho.id}>
-            <div className="card">
-            <div>{recho.Echo.User.fullname}<span className ="pull-right"> {moment(recho.Echo.createdAt).format('MMM. d')} </span></div>
-            <div>{recho.Echo.subject}</div>
-            <a href="#"  onClick={(e) => this.handleReecho(e, recho.Echo.id,recho.Echo.User.userId)}>Reecho</a>
+            <div className="tile">
+            <div className ="tileHeader black54">{recho.Echo.User.fullname}<span className ="pull-right"> {moment(recho.Echo.createdAt).format('MMM. d')} </span></div>
+            <div className = "tileBody">{recho.Echo.subject}</div>
+            <a className="tileFooter" href="#"  onClick={(e) => this.handleReecho(e, recho.Echo.id,recho.Echo.User.userId)}>Reecho</a>
 
             </div>
            </div>

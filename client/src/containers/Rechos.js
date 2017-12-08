@@ -50,7 +50,6 @@ class Rechos extends Component {
     })
     .then((response) => response.json())
       .then((rechos) =>{ this.setState({rechos})
-          console.log(JSON.stringify(rechos))
 
     }
     );

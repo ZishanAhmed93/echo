@@ -80,9 +80,9 @@ class LandingPage extends Component {
             <Snippet />
           </div>
           
-          <div className = "col-6 tile">
+          <div className = "col-6 tile regWrap">
             <h2>Sign up to project your voice</h2>
-            <RegistrationForm
+            <RegistrationForm 
               handleSubmit={this.handleSubmit}
               handleChange={this.handleChange}
               user={this.state.user}

@@ -1,0 +1,16 @@
+#RegistrationForm{
+  text-align: left;
+}
+
+#RegistrationForm Form *{
+  margin-bottom: 8px;
+}
+
+#RegistrationForm button{
+  margin-top: 16px;
+}
+
+.center{
+  align-items: center; 
+  display: block;
+}

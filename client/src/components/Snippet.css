@@ -1,0 +1,8 @@
+#Snippet{
+  text-align: left;
+}
+
+#Snippet, #Snippet * {
+  line-height: 1.4em;
+  margin-bottom: 2px;
+}

@@ -16,3 +16,9 @@
 	padding-bottom: 10px;
 	width: 300px;
 }
+
+.row{
+  margin: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}

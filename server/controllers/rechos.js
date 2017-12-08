@@ -11,12 +11,16 @@ router.get('/', (req, res) => {
       {
         where: {ReceiverId: req.user.id},
         include: [ 
-          { model: models.Echos }
+          { model: models.Echos ,
+            include:[ models.Users]}
+          
         ]
       }
     )
     .then(rechos => {
       res.json(rechos);
+
+
     }); 
   } 
 });

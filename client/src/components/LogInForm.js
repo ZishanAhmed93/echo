@@ -39,7 +39,7 @@ const logInForm = ({
         
       </span>
       <span className="row">
-        <button className="btn btn-primary" type="submit">Submit</button>
+        <button className="btn button2" type="submit">Sign in</button>
       </span>
     </Form>
   //</div>

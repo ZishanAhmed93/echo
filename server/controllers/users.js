@@ -55,7 +55,7 @@ router.get('/auth', (req, res) => {
 router.get('/user', (req, res) => {
   //if user is logged in send user's id, otherwise send unauthorized
   if(req.user) {
-    res.json(req.user.id);
+    res.json(req.user);
   }
   else{
     res.sendStatus(401);

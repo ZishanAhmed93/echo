@@ -7,13 +7,13 @@ import Rechos from './Rechos'
 class DashboardPage extends Component {
   render() {
     return(
-      <div className="container" id="dashboard-content">
-      <div className="row">
+      <div id="dashboard-content" className="container">
+      
       <div className="col-6">
         <NewEcho/>      
       	<Rechos/>
       </div>
-      </div>
+      
       </div>
 
     

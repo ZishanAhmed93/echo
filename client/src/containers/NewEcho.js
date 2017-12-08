@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import './NewEcho.css';
 
 class NewEcho extends Component {
   constructor() {
@@ -54,7 +54,7 @@ class NewEcho extends Component {
 
   render() {
     return(
-    <form onSubmit={this.handleSubmit}>
+    <form id="NewEcho" className="tile" onSubmit={this.handleSubmit}>
       <label>
         Subject:
         <input type='text' name="subject" onChange={this.handleChange} />

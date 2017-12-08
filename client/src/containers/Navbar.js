@@ -93,7 +93,8 @@ handleLogInForm(event) {
           (
             <div className="navbar-nav">
               <Link to="/" className="nav-item nav-link active">Home</Link>
-              <Link to="echos" className="nav-item nav-link" href="#">Echo</Link>
+              <Link to="/echos" className="nav-item nav-link" href="#">Echo</Link>
+              <Link to="/profile" className="nav-item nav-link" href="#">Profile</Link>
               <a className="nav-item nav-link" href="#" onClick={this.handleLogOut}>LogOut</a>            
             </div>
           ):(

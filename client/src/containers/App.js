@@ -34,18 +34,7 @@ function PrivateRoute({component: Component, isAuthed, ...rest}) {
       {...rest}
       render={(props) => isAuthed === true 
         ? <Component {...props} /> 
-        : <Redirect to={{pathname: '/login', state: {from: props.location}}} />}
-    />
-  );
-}
-
-function LoginOrRegisterRoute({component: Component, isAuthed, onAuthChange, ...rest}) {
-  return(
-    <Route 
-      {...rest}
-      render={(props) => isAuthed === true 
-        ? <Redirect to={{pathname: '/', state: {from: props.location}}} />
-        : <Component onAuthChange={onAuthChange} {...props} /> }
+        : <Redirect to={{pathname: '/', state: {from: props.location}}} />}
     />
   );
 }
@@ -84,21 +73,21 @@ class App extends Component {
     let isAuthed = this.state.isAuthed;
     return(
       <Router>
-        <div>
+        <div id="ContentWrap">
+        
           <Navbar isAuthed={this.state.isAuthed}  onAuthChange={this.handleAuth}/>
-          <Switch>
+        
+          <div id="Content">
+            <Switch>
+              {isAuthed ? <Route exact path="/" component={DashboardPage} />
+                        : <Route exact path="/" component={LandingPage} />
+              }
 
-            {isAuthed ? <Route exact path="/" component={DashboardPage} />
-                      : <Route exact path="/" component={LandingPage} />
-            }
-          
-            <LoginOrRegisterRoute isAuthed={this.state.isAuthed} onAuthChange={this.handleAuth} path="/login" component={LogIn} />
-            
-            <Route path="/echos" component={Echos} />
-            <Route path="/newecho" component={NewEcho}/>
-            <Route path="/echo/:id" component={ViewEcho}/>
-						<Route path="/profilepage" component={ProfilePage}/>
-          </Switch>
+              <PrivateRoute isAuthed={this.state.isAuthed} path="/echos" component={Echos} />
+              <PrivateRoute isAuthed={this.state.isAuthed} path="/echos/:id" component={ViewEcho} />
+              <PrivateRoute isAuthed={this.state.isAuthed} path="/profile" component={ProfilePage} />
+            </Switch>
+          </div>
           <Footer />
         </div>
       </Router>
@@ -107,5 +96,3 @@ class App extends Component {
 }
 
 export default App;
-
-// <PrivateRoute isAuthed={this.state.isAuthed} path="/echos" component={Echos} />

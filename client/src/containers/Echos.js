@@ -5,12 +5,12 @@ class Echos extends Component {
   constructor() {
     super();
     this.state = {
-      rechos: [],
+      echos: [],
     }
   }
 
   componentDidMount() {
-    fetch('/rechos',{
+    fetch('/echos',{
       headers: {
         'Accept' : 'application.json',
         'Content-type' : 'application.json',
@@ -19,17 +19,17 @@ class Echos extends Component {
       credentials: 'same-origin',
     })
     .then((response) => response.json())
-    	.then((rechos) => this.setState({rechos})
+    	.then((echos) => this.setState({echos})
     );
   }
 
   render() {
     return(
       <div>
-      	RECHOS
-        {this.state.rechos.map(recho =>
-        	<div key={recho.id}>
-            <li>{recho.Echo.subject}</li>
+      	ECHOS
+        {this.state.echos.map(echo =>
+        	<div key={echo.id}>
+            <li>{echo.subject}</li>
         	 </div>
         	)}
       </div>

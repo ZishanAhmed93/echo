@@ -12,7 +12,8 @@ class ViewEcho extends Component{
 constructor() {
     super();
     this.state = {echo: '',
-				comments: []
+				comments: [],
+        subject: '',
 				};
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);

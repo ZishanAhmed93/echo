@@ -41,7 +41,11 @@ const EchosController = {
       });
   },
   create(req, res) { 
+<<<<<<< HEAD
     if(req.user) {
+=======
+    if(req.user.id) {
+>>>>>>> 031914478de6330179e58f4d15b4c7249518407a
       models.Echos.create(
         {
           UserId: req.user.id,

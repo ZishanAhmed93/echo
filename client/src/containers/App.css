@@ -87,10 +87,25 @@ body{
 
 body{
   min-height: 100vh;
+
+}
+
+#root{
+  min-height: 100vh;
+}
+
+#ContentWrap{
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+#Content{
+  flex-grow: 1;
 }
 
 #footer{
-  /*align-items: flex-end;*/
-  position: absolute;
-  bottom: 0;
+  align-items: flex-end;
+  /*position: absolute;*/
+  /*bottom: 0;*/
 }

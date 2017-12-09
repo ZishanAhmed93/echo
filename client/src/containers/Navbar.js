@@ -67,7 +67,7 @@ handleLogInForm(event) {
     handleLogOut(event) {
     event.preventDefault();
   
-      fetch("logout", {
+      fetch("/logout", {
       method: 'get',
       headers: {
         'Accept': 'application/json',

@@ -18,34 +18,25 @@ constructor() {
 		};
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    
+    this.fetchComments = this.fetchComments.bind(this);
 }
 
-componentDidMount(){
-  fetch(`/echos/${this.props.match.params.id}`)
-  .then((response) => response.json())
-    .then((echo) => this.setState({echo})
-    );        
-      //const echo = jsonBody.map((c) => <Echo data ={c} />);
-      
-  fetch(`/echos/${this.props.match.params.id}/comments`)
-  .then((response) => response.json())
-    .then((comments) => this.setState({comments})
-  );
-}
+  componentDidMount(){
+    fetch(`/echos/${this.props.match.params.id}`)
+    .then((response) => response.json())
+      .then((echo) => this.setState({echo})
+      );  
 
-componentDidUpdate() {
-  fetch(`/echos/${this.props.match.params.id}`)
-  .then((response) => response.json())
-    .then((echo) => this.setState({echo})
-    );        
-      //const echo = jsonBody.map((c) => <Echo data ={c} />);
-      
-  fetch(`/echos/${this.props.match.params.id}/comments`)
-  .then((response) => response.json())
-    .then((comments) => this.setState({comments})
-  );
-}  
+    this.fetchComments();
+  }
+
+  fetchComments() {
+              
+    fetch(`/echos/${this.props.match.params.id}/comments`)
+    .then((response) => response.json())
+      .then((comments) => this.setState({comments})
+    );    
+  }
 
  handleChange(event) {
     this.setState({reflection: event.target.value});
@@ -67,7 +58,7 @@ componentDidUpdate() {
     })
     .then(res => res.json())
     .then(json => {
-
+      this.fetchComments();
     })
     .catch(err => {
       console.log(err.message);

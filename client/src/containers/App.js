@@ -84,7 +84,7 @@ class App extends Component {
               }
 
               <PrivateRoute isAuthed={this.state.isAuthed} path="/echos" component={Echos} />
-              <PrivateRoute isAuthed={this.state.isAuthed} path="/echos/:id" component={ViewEcho} />
+              <PrivateRoute isAuthed={this.state.isAuthed} path="/echo/:id" component={ViewEcho} />
               <PrivateRoute isAuthed={this.state.isAuthed} path="/profile" component={ProfilePage} />
             </Switch>
           </div>

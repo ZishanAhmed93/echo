@@ -38,6 +38,7 @@ const resetDatabase = false;
 const PopulateDatabase = require('./middlewares/faker');
 
 models.sequelize.sync({force: resetData})
+
   .then(() => {
     app.listen(PORT, () => {
       console.log(`Server is up and running on port: ${PORT}`);

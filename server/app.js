@@ -34,16 +34,16 @@ app.use('/', controllers);
 // First, make sure the Database tables and models are in sync
 // then, start up the server and start listening.
 
-const resetData = false;
+const resetDatabase = false;
 const PopulateDatabase = require('./middlewares/faker');
 
-models.sequelize.sync({force: resetData})
+models.sequelize.sync({force: resetDatabase})
 
   .then(() => {
     app.listen(PORT, () => {
       console.log(`Server is up and running on port: ${PORT}`);
 
-      if(resetData) {
+      if(resetDatabase) {
         PopulateDatabase();
       }
     });

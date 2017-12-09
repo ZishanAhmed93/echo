@@ -59,7 +59,7 @@ class NewEcho extends Component {
         Subject:
         <input type='text' name="subject" onChange={this.handleChange} />
       </label>
-      <input type='submit' value="Submit" />
+      <input type='submit' value="Submit" className="btn ctaButton" />
     </form>
     );
   }

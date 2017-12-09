@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
   var Comments = sequelize.define('Comments', {
-    reflection: DataTypes.STRING
+    reflection: DataTypes.TEXT
   });
 
   Comments.associate = models => {

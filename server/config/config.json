@@ -4,7 +4,8 @@
     "password": "echo_co",
     "database": "echo_db",
     "host": "127.0.0.1",
-    "dialect": "postgresql"
+    "dialect": "postgresql",
+    "logging": false
   },
   "test": {
     "username": "DB_USERNAME",

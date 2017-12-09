@@ -38,13 +38,9 @@ body{
   to { transform: rotate(360deg); }
 }
 
-#home-background{
-  background-color: #FDFDFD;
+#home-background, .jumbotron{
+  background-color: #FAFAFA;
 }
-.jumbotron {
- background-color: #FDFDFD; 
-}
-
 
 .tile{
   background-color: #FFFFFF;

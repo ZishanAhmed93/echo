@@ -55,9 +55,9 @@ class NewEcho extends Component {
   render() {
     return(
     <form id="NewEcho" className="tile" onSubmit={this.handleSubmit}>
-      <label>
+      <label> 
         Subject:
-        <input type='text' name="subject" onChange={this.handleChange} />
+        <input type='text' name="subject" placeholder="Greetings Traveler" onChange={this.handleChange} />
       </label>
       <input type='submit' value="Submit" className="btn ctaButton" />
     </form>

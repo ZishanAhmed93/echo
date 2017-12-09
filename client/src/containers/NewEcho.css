@@ -1,3 +1,20 @@
 #NewEcho{
-  
+  display: flex;
+  flex-direction: row;
+}
+
+#NewEcho label{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  flex-grow: 1;
+}
+
+#NewEcho label input{
+  flex-grow: 1;
+}
+
+#NewEcho input{
+  /*align-self: flex-end;*/
+  margin-left: 8px;
 }

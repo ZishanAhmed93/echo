@@ -72,7 +72,7 @@ class Rechos extends Component {
 
   render() {
     return(
-      <div className = "container">
+      <div id="Rechos">
 
         
         {this.state.rechos.map(recho =>

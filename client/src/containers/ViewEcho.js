@@ -33,6 +33,7 @@ constructor() {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
+      credentials: 'same-origin',
       // This is the body parameter
       body: JSON.stringify({
         reflection: this.state.reflection
@@ -68,14 +69,16 @@ render()
 {
 return(
 	<div>
-	{this.state.echo.id} {this.state.echo.subject} {this.state.echo.comments}
+
+
+  {this.state.echo.id} {this.state.echo.subject} {this.state.echo.comments}
 	
 
   <div className = "ViewComments">
   	LIST OF Comments
     {this.state.comments.map(comment =>
     	<div key={comment.id}>
-       {comment.id} : {comment.reflection}
+       {comment.User.fullname} : {comment.reflection}
     	 </div>
     	)}
   </div>

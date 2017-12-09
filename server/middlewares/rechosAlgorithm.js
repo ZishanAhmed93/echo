@@ -14,7 +14,7 @@ function RechosAlgorithm(echoId, senderId, res) {
       // randomize receivers for now
       receiverIds = ShuffleArray(receiverIds);
 
-      // return only the first 5 user id
+      // return only the first 6 user id
       const limit = 6;
       if(receiverIds.length > limit) {
         receiverIds = receiverIds.slice(0, limit);

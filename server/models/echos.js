@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
   var Echos = sequelize.define('Echos', {
-    subject: { type: DataTypes.STRING, allowNull: false },
+    subject: { type: DataTypes.TEXT, allowNull: false },
     echo_point: { type: DataTypes.INTEGER, defaultValue: 0 },
   });
 

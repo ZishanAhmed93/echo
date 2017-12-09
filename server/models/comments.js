@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
   var Comments = sequelize.define('Comments', {
-    reflection: DataTypes.STRING
+    reflection: DataTypes.TEXT
   });
 
   Comments.associate = models => {
@@ -8,16 +8,11 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'EchoId',
       onDelete: 'cascade'
     });
-  
-  models.Comments.belongsTo(models.Users, {
-      foreignKey: 'UserId',
+
+    models.Comments.belongsTo(models.Users, {
+      foreignKey: 'UserId'
     });
-  
-
   }
-
-  
-  
 
   return Comments;
 }

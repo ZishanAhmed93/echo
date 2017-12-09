@@ -1,6 +1,7 @@
 #RegistrationForm{
   text-align: left;
   flex-grow: 1;
+  background-color: transparent;
 }
 
 #RegistrationForm Form *{

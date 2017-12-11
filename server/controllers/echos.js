@@ -61,23 +61,35 @@ const EchosController = {
     }
   },
   getComment(req, res) {
-    models.Comments.findAll({where: {EchoId: req.params.id}})
+    models.Comments.findAll(
+
+      {
+        where: {EchoId: req.params.id},
+        include: [
+        {model: models.Users
+        }]
+      })
       .then(echos => {
         res.json(echos);
       });
   },
   createComment(req, res) {
-    models.Echos.findById(parseInt(req.params.id))
+    if(req.user) {
+      models.Echos.findById(parseInt(req.params.id))
       .then(echo => {
         models.Comments.create({
           reflection: req.body.reflection,
-          EchoId: echo.id
+          EchoId: echo.id,
+          UserId: req.user.id,
         }).then(comment => res.json(comment));
       })
       .catch(err => {
         console.log(err);
         res.sendStatus(400);
       });
+      
+    }
+    
   },
   deleteComment(req, res) {
     models.Comments.destroy({

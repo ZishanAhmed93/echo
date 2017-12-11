@@ -11,10 +11,10 @@ class Rechos extends Component {
       user: {},
       currSubj:""
     }
-    this.handleReecho = this.handleReecho.bind(this);
+    this.handleRecho = this.handleRecho.bind(this);
   }
 
-  handleReecho(event, echoId, userId){
+  handleRecho(echoId, event){
 
     event.preventDefault();
     fetch('/rechos', {
@@ -80,8 +80,13 @@ class Rechos extends Component {
             <div className="tile">
             <div className ="tileHeader black54">{recho.Echo.User.fullname}<span className ="pull-right"> {moment(recho.Echo.createdAt).format('MMM. d')} </span></div>
             <div className = "tileBody">{recho.Echo.subject}</div>
-            <a className="tileFooter" href="#"  onClick={(e) => this.handleReecho(e, recho.Echo.id,recho.Echo.User.userId)}>Reecho</a>
-
+            <span> <a className="tileFooter" href="#"  onClick={(e) => this.handleRecho(recho.Echo.id, e)}>Recho</a>
+            <span className = "pull-right">
+            <li className="tileFooter">
+            <Link to={`/echo/${recho.Echo.id}`}> View All Comments </Link> 
+            </li>
+             </span>
+            </span>
             </div>
            </div>
           )}

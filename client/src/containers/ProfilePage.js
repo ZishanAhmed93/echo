@@ -16,32 +16,29 @@ class ProfilePage extends Component {
   }
 
   componentDidMount() {
-  fetch('/user',{
-      method: "get",
-      headers: {
-        'Accept' : 'application.json',
-        'Content-type' : 'application.json',
-      },
-      credentials: 'same-origin',
-    })
-    .then((response) => response.json())
-      .then((user) => this.setState({user})
-    );
+		fetch('/user',{
+				method: "get",
+				headers: {
+					'Accept' : 'application.json',
+					'Content-type' : 'application.json',
+				},
+				credentials: 'same-origin',
+			})
+			.then((response) => response.json())
+				.then((user) => this.setState({user})
+			);
   }
 
   render() {
     return(
       <div className="container text-center" id="profile-content">
           <div className="profile-area">
-          <h3>{this.state.username}</h3>
+          <h3>{this.state.fullname}</h3>
           <Panel >
             <img src={testImage} alt="profile" />
-            <div>
-            <ControlLabel><Glyphicon glyph="user" /> Nickname</ControlLabel>
-            </div>
-            <div>
-            <ControlLabel><Glyphicon glyph="user" /> Email</ControlLabel>
-            </div>
+						<h4>Username: {this.state.username}</h4>
+						<h4>Level: {this.state.level}</h4>
+						<h4>Experience: {this.state.experience}</h4>
           </Panel>
 					<Echos/>
           </div>

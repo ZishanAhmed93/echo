@@ -1,32 +1,58 @@
 import React, { Component } from 'react';
 import './ProfilePage.css';
 import testImage from '../design/download.png';
-import { Panel, ControlLabel, Glyphicon } from 'react-bootstrap';
+import { Panel, ControlLabel, Glyphicon, Grid, Row, Col } from 'react-bootstrap';
 
 import Echos from '../containers/Echos';
 
 //Shell for the Profile Page
 
 class ProfilePage extends Component {
-	render() {
-		return(
-			<div className="container text-center" id="profile-content">
-					<div className="profile-area">
-					<h1>John Doe</h1>
-					<Panel header="Profile">
-						<img src={testImage} alt="profile" />
-						<div>
-						<ControlLabel><Glyphicon glyph="user" /> Nickname</ControlLabel>
-						</div>
-						<div>
-						<ControlLabel><Glyphicon glyph="user" /> Email</ControlLabel>
-						</div>
-						<pre></pre>
-					</Panel>
-					</div>
-			</div>
-		);
-	}
+  constructor() {
+    super();
+    this.state = {
+      user: {}
+    }
+  }
+
+  componentDidMount() {
+		fetch('/user',{
+				method: "get",
+				headers: {
+					'Accept' : 'application.json',
+					'Content-type' : 'application.json',
+				},
+				credentials: 'same-origin',
+			})
+			.then((response) => response.json())
+				.then((user) => this.setState({user})
+			);
+  }
+
+  render() {
+    return(
+      <div className="container text-center" id="profile-content">
+					<Grid>
+						<Row className="show-grid">
+							<Col md={6} mdPull={6} >	
+								<div className="profile-area">
+								<h3>{this.state.user.fullname}</h3>
+								<Panel >
+									<img src={testImage} alt="profile" />
+									<h4>Username: {this.state.user.username}</h4>
+									<h4>Level: {this.state.user.level}</h4>
+									<h4>Experience: {this.state.user.experience}</h4>
+								</Panel>
+								</div>
+							</Col>
+							<Col md={6} mdPull={6} >	
+								<Echos/>
+							</Col>
+						</Row>
+					</Grid>
+      </div>
+    );
+  }
 }
 
 export default ProfilePage;

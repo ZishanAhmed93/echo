@@ -31,26 +31,24 @@ class ProfilePage extends Component {
 
   render() {
     return(
-      <div className="container text-center" id="profile-content">
-					<Grid>
-						<Row className="show-grid">
-							<Col md={6} mdPull={6} >	
-								<div className="profile-area">
-								<h3>{this.state.user.fullname}</h3>
-								<Panel >
-									<img src={testImage} alt="profile" />
-									<h4>Username: {this.state.user.username}</h4>
-									<h4>Level: {this.state.user.level}</h4>
-									<h4>Experience: {this.state.user.experience}</h4>
-								</Panel>
-								</div>
-							</Col>
-							<Col md={6} mdPull={6} >	
-								<Echos/>
-							</Col>
-						</Row>
-					</Grid>
-      </div>
+				<Grid className="text-center">
+					<Row className="show-grid">
+						<Col md={6} mdPull={6} >	
+							<div className="profile-area">
+							<h3>{this.state.user.fullname}</h3>
+							<Panel >
+								<img src={testImage} alt="profile" />
+								<h4>Username: {this.state.user.username}</h4>
+								<h4>Level: {this.state.user.level}</h4>
+								<h4>Experience: {this.state.user.experience}</h4>
+							</Panel>
+							</div>
+						</Col>
+						<Col md={6} mdPull={6} >	
+							<Echos/>
+						</Col>
+					</Row>
+				</Grid>
     );
   }
 }

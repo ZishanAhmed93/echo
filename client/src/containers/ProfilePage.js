@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './ProfilePage.css';
 import testImage from '../design/download.png';
-import { Panel, ControlLabel, Glyphicon } from 'react-bootstrap';
+import { Panel, ControlLabel, Glyphicon, Grid, Row, Col } from 'react-bootstrap';
 
 import Echos from '../containers/Echos';
 
@@ -11,7 +11,7 @@ class ProfilePage extends Component {
   constructor() {
     super();
     this.state = {
-      user: {},
+      user: {}
     }
   }
 
@@ -32,16 +32,24 @@ class ProfilePage extends Component {
   render() {
     return(
       <div className="container text-center" id="profile-content">
-          <div className="profile-area">
-          <h3>{this.state.fullname}</h3>
-          <Panel >
-            <img src={testImage} alt="profile" />
-						<h4>Username: {this.state.username}</h4>
-						<h4>Level: {this.state.level}</h4>
-						<h4>Experience: {this.state.experience}</h4>
-          </Panel>
-					<Echos/>
-          </div>
+					<Grid>
+						<Row className="show-grid">
+							<Col md={6} mdPull={6} >	
+								<div className="profile-area">
+								<h3>{this.state.user.fullname}</h3>
+								<Panel >
+									<img src={testImage} alt="profile" />
+									<h4>Username: {this.state.user.username}</h4>
+									<h4>Level: {this.state.user.level}</h4>
+									<h4>Experience: {this.state.user.experience}</h4>
+								</Panel>
+								</div>
+							</Col>
+							<Col md={6} mdPull={6} >	
+								<Echos/>
+							</Col>
+						</Row>
+					</Grid>
       </div>
     );
   }

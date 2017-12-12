@@ -72,21 +72,23 @@ class Rechos extends Component {
 
   render() {
     return(
-      <div className = "container">
+      <div id="Rechos">
 
         
         {this.state.rechos.map(recho =>
           <div key={recho.id}>
-            <div className="tile">
-            <div className ="tileHeader black54">{recho.Echo.User.fullname}<span className ="pull-right"> {moment(recho.Echo.createdAt).format('MMM. d')} </span></div>
-            <div className = "tileBody">{recho.Echo.subject}</div>
-            <span> <a className="tileFooter" href="#"  onClick={(e) => this.handleRecho(recho.Echo.id, e)}>Recho</a>
-            <span className = "pull-right">
-            <li className="tileFooter">
-            <Link to={`/echo/${recho.Echo.id}`}> View All Comments </Link> 
-            </li>
-             </span>
-            </span>
+            <div className="tile echoPost">
+             <div className ="tileHeader black54">{recho.Echo.User.fullname}<span className ="pull-right"> {moment(recho.Echo.createdAt).format('MMM. D')} </span></div>
+              <div className = "tileBody">{recho.Echo.subject}</div>
+            
+                <span> <a className="tileFooter" href="#"  onClick={(e) => this.handleRecho(recho.Echo.id, e)}>Recho</a>
+                  <span className = "pull-right">
+                    <div className="tileFooter">
+                      <Link to={`/echo/${recho.Echo.id}`}> View All Comments </Link> 
+                    </div>
+                  </span>
+                </span>
+                
             </div>
            </div>
           )}

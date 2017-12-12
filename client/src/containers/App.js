@@ -75,6 +75,7 @@ class App extends Component {
       <Router>
         <div id="ContentWrap">
         
+          
           <Navbar isAuthed={this.state.isAuthed}  onAuthChange={this.handleAuth}/>
         
           <div id="Content">
@@ -82,13 +83,15 @@ class App extends Component {
               {isAuthed ? <Route exact path="/" component={DashboardPage} />
                         : <Route exact path="/" component={LandingPage} />
               }
-
               <PrivateRoute isAuthed={this.state.isAuthed} path="/echos" component={Echos} />
               <PrivateRoute isAuthed={this.state.isAuthed} path="/echo/:id" component={ViewEcho} />
               <PrivateRoute isAuthed={this.state.isAuthed} path="/profile" component={ProfilePage} />
             </Switch>
           </div>
+        
           <Footer />
+        
+
         </div>
       </Router>
     );

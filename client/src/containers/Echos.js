@@ -28,7 +28,7 @@ class Echos extends Component {
       <div>
       	ECHOS
         {this.state.echos.map(echo =>
-        	<div key={echo.id}>
+        	<div key={echo.id} className="echoPost">
             <li>{echo.subject}</li>
         	 </div>
         	)}

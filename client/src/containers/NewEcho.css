@@ -1,0 +1,37 @@
+#NewEcho{
+  margin-bottom: 16px;
+}
+
+.newPostInLine{
+  display: flex;
+  flex-direction: row;
+}
+
+.newPostInLine label{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  flex-grow: 1;
+}
+
+.newPostInLine label input{
+  flex-grow: 1;
+}
+
+.newPostInLine input{
+  /*align-self: flex-end;*/
+  margin-left: 8px;
+}
+
+.centerText{
+  width: 100%;
+  text-align: center;
+}
+
+.mb8{
+  margin-bottom: 8px;
+}
+
+.mb16{
+  margin-bottom: 16px;
+}

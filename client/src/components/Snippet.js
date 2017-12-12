@@ -5,7 +5,7 @@ import './Snippet.css';
 class Snippet extends React.Component {
   render() {
     return (
-      <div className="container-fluid tile" id="Snippet">
+      <div className="container-fluid" id="Snippet">
         <p><strong className = "black87">ech·o</strong></p>
         <p><strong className = "black87">/ˈekō/</strong></p>
         

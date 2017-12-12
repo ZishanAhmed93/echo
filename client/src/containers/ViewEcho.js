@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import moment from "moment";
 import {
   BrowserRouter as Router,
   Route,
@@ -19,6 +20,7 @@ constructor() {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.fetchComments = this.fetchComments.bind(this);
+
 }
 
 
@@ -69,54 +71,44 @@ constructor() {
 render()
 {
 
-    let userName = ""
-  if(this.state.echo.User !=  null)
-      userName = this.state.echo.User.fullname
+    let posterFullName = ""
+    if(this.state.echo.User !=  null)
+      posterFullName = this.state.echo.User.fullname
     
 
 
 return(
-	<div>
-
-
+  <div className="col-8">
   
-  
-  POST: {this.state.echo.subject}  UserName:{userName}
-	
+    <div className="tile">
+      <div className ="tileHeader black54"> 
+        {posterFullName} <span className ="pull-right"> {moment(this.state.echo.createdAt).format('MMM. D')} </span>
+      </div>
+      {this.state.echo.subject} {this.state.echo.comments}
+    </div>
 
-  <div className = "ViewComments">
-  	LIST OF Comments
-    {this.state.comments.map(comment =>
-    	<div key={comment.id}>
-       {comment.User.fullname} : {comment.reflection}
-    	 </div>
-    	)}
-  </div>
-
-
-	
-
-
-    <form onSubmit={this.handleSubmit}>
+    <form className="tile mb16 newPostInLine" onSubmit={this.handleSubmit}>
       <label>
-        Comments:
+        Share your comment:
         <input type='text' name="subject" onChange={this.handleChange} />
       </label>
-      <input type='submit' value="Submit" />
+      <input className="btn ctaButton" type='submit' value="Submit" />
     </form>
+      
+    <div className = "ViewComments">
+    	Comments
+      {this.state.comments.map(comment =>
+        <div key={comment.id} className="tile">
+          {comment.User.fullname} : {comment.reflection}
+        </div>
+      )}
+    </div>
 
-	</div>
+  </div>
 
 )
 }
 
-/*({match}) => (
-  <div>
-    <h2>{match.params.id}</h2>
-  </div>
-
-)
-*/
 }
 
 export default ViewEcho

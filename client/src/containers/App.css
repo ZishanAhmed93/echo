@@ -41,6 +41,8 @@ body{
 
 #Content{
   background-color: #FAFAFA;
+  justify-content: space-around;
+
 }
 .jumbotron{
   background-color: transparent;
@@ -53,6 +55,13 @@ body{
   padding-bottom: 8px;
   /*margin-bottom: 16px;*/
 }
+.echoPost{
+  margin-bottom: 16px;
+}
+.commentPost{
+  margin-bottom: 8px;
+}
+
 
 .red{
   color: ;
@@ -131,3 +140,4 @@ body, #root, #ContentWrap, #Content{
 #footer{
   align-self: flex-end;
 }
+

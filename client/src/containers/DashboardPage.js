@@ -9,7 +9,7 @@ class DashboardPage extends Component {
     return(
       <div id="dashboard-content" className="container">
       
-      <div className="col-6">
+      <div className="col-8">
         <NewEcho/>      
       	<Rechos/>
       </div>

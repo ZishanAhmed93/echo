@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import moment from "moment";
 import {
   BrowserRouter as Router,
   Route,
@@ -12,13 +13,14 @@ class ViewEcho extends Component{
 constructor() {
     super();
     this.state = {
-      echo: '',
+      echo: {},
 			comments: [],
       subject: ''
 		};
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.fetchComments = this.fetchComments.bind(this);
+
 }
 
   componentDidMount(){
@@ -68,34 +70,37 @@ constructor() {
 render()
 {
 return(
-	<div>
-
-
-  {this.state.echo.subject} {this.state.echo.comments}
-	
-
-  <div className = "ViewComments">
-  	LIST OF Comments
-    {this.state.comments.map(comment =>
-    	<div key={comment.id}>
-       {comment.User.fullname} : {comment.reflection}
-    	 </div>
-    	)}
+  <div>
+  
+  <div className="col-8">
+    <div className="tile">
+      <div className ="tileHeader black54"> 
+        fullnamehere <span className ="pull-right"> {moment(this.state.echo.createdAt).format('MMM. d')} </span>
+      </div>
+      {this.state.echo.subject} {this.state.echo.comments}
+  	</div>
   </div>
 
+  <div className="col-8">
+  <form className="tile newPostInLine" onSubmit={this.handleSubmit}>
+    <label>
+      Share your comment:
+      <input type='text' name="subject" onChange={this.handleChange} />
+    </label>
+    <input className="btn ctaButton" type='submit' value="Submit" />
+  </form>
+  </div>
 
-	
+  <div className = "col-8 ViewComments">
+  	Comments
+    {this.state.comments.map(comment =>
+      <div key={comment.id} className="tile">
+        {comment.User.fullname} : {comment.reflection}
+      </div>
+    )}
+  </div>
 
-
-    <form onSubmit={this.handleSubmit}>
-      <label>
-        Comments:
-        <input type='text' name="subject" onChange={this.handleChange} />
-      </label>
-      <input type='submit' value="Submit" />
-    </form>
-
-	</div>
+  </div>
 
 )
 }

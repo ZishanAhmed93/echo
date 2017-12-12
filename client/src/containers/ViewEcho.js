@@ -12,9 +12,9 @@ class ViewEcho extends Component{
 constructor() {
     super();
     this.state = {
-      echo: '',
+      echo: {},
 			comments: [],
-      subject: ''
+      echofullName: "",
 		};
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -24,8 +24,9 @@ constructor() {
 componentDidMount(){
   fetch(`/echos/${this.props.match.params.id}`)
   .then((response) => response.json())
-    .then((echo) => this.setState({echo})
-    );        
+    .then((echo) => {this.setState({echo})}
+    );
+        
       //const echo = jsonBody.map((c) => <Echo data ={c} />);
       
   fetch(`/echos/${this.props.match.params.id}/comments`)
@@ -35,6 +36,8 @@ componentDidMount(){
 }
 
 componentDidUpdate() {
+
+
   fetch(`/echos/${this.props.match.params.id}`)
   .then((response) => response.json())
     .then((echo) => this.setState({echo})
@@ -76,11 +79,20 @@ componentDidUpdate() {
 
 render()
 {
+
+    let userName = ""
+  if(this.state.echo.User !=  null)
+      userName = this.state.echo.User.fullname
+    
+
+
 return(
 	<div>
 
 
-  {this.state.echo.subject} {this.state.echo.comments}
+  
+  
+  POST: {this.state.echo.subject}  UserName:{userName}
 	
 
   <div className = "ViewComments">

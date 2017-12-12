@@ -15,13 +15,14 @@ constructor() {
     this.state = {
       echo: {},
 			comments: [],
-      subject: ''
+      echofullName: "",
 		};
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.fetchComments = this.fetchComments.bind(this);
 
 }
+
 
   componentDidMount(){
     fetch(`/echos/${this.props.match.params.id}`)
@@ -69,49 +70,45 @@ constructor() {
 
 render()
 {
+
+    let posterFullName = ""
+    if(this.state.echo.User !=  null)
+      posterFullName = this.state.echo.User.fullname
+    
+
+
 return(
-  <div>
-  
   <div className="col-8">
+  
     <div className="tile">
       <div className ="tileHeader black54"> 
-        fullnamehere <span className ="pull-right"> {moment(this.state.echo.createdAt).format('MMM. d')} </span>
+        {posterFullName} <span className ="pull-right"> {moment(this.state.echo.createdAt).format('MMM. D')} </span>
       </div>
       {this.state.echo.subject} {this.state.echo.comments}
-  	</div>
-  </div>
+    </div>
 
-  <div className="col-8">
-  <form className="tile newPostInLine" onSubmit={this.handleSubmit}>
-    <label>
-      Share your comment:
-      <input type='text' name="subject" onChange={this.handleChange} />
-    </label>
-    <input className="btn ctaButton" type='submit' value="Submit" />
-  </form>
-  </div>
-
-  <div className = "col-8 ViewComments">
-  	Comments
-    {this.state.comments.map(comment =>
-      <div key={comment.id} className="tile">
-        {comment.User.fullname} : {comment.reflection}
-      </div>
-    )}
-  </div>
+    <form className="tile mb16 newPostInLine" onSubmit={this.handleSubmit}>
+      <label>
+        Share your comment:
+        <input type='text' name="subject" onChange={this.handleChange} />
+      </label>
+      <input className="btn ctaButton" type='submit' value="Submit" />
+    </form>
+      
+    <div className = "ViewComments">
+    	Comments
+      {this.state.comments.map(comment =>
+        <div key={comment.id} className="tile">
+          {comment.User.fullname} : {comment.reflection}
+        </div>
+      )}
+    </div>
 
   </div>
 
 )
 }
 
-/*({match}) => (
-  <div>
-    <h2>{match.params.id}</h2>
-  </div>
-
-)
-*/
 }
 
 export default ViewEcho

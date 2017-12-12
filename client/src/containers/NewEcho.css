@@ -1,7 +1,10 @@
+#NewEcho{
+  margin-bottom: 16px;
+}
+
 .newPostInLine{
   display: flex;
   flex-direction: row;
-  margin-bottom: 16px;
 }
 
 .newPostInLine label{
@@ -18,4 +21,17 @@
 .newPostInLine input{
   /*align-self: flex-end;*/
   margin-left: 8px;
+}
+
+.centerText{
+  width: 100%;
+  text-align: center;
+}
+
+.mb8{
+  margin-bottom: 8px;
+}
+
+.mb16{
+  margin-bottom: 16px;
 }

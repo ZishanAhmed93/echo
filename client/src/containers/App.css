@@ -1,5 +1,7 @@
 *{
   box-sizing: border-box;
+  transition: width 2s;
+
 }
 
 body{

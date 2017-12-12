@@ -35,7 +35,10 @@ const EchosController = {
     //   .then(echo => {
     //     res.json(echo);
     //   });
-    models.Echos.findById(parseInt(req.params.id))
+    models.Echos.findOne(
+      {where: {id: parseInt(req.params.id)},
+        include: [{model: models.Users}]
+      })
       .then(echo => {
         res.json(echo);
       });

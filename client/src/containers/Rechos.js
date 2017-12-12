@@ -78,7 +78,7 @@ class Rechos extends Component {
         {this.state.rechos.map(recho =>
           <div key={recho.id}>
             <div className="tile echoPost">
-             <div className ="tileHeader black54">{recho.Echo.User.fullname}<span className ="pull-right"> {moment(recho.Echo.createdAt).format('MMM. d')} </span></div>
+             <div className ="tileHeader black54">{recho.Echo.User.fullname}<span className ="pull-right"> {moment(recho.Echo.createdAt).format('MMM. D')} </span></div>
               <div className = "tileBody">{recho.Echo.subject}</div>
             
                 <span> <a className="tileFooter" href="#"  onClick={(e) => this.handleRecho(recho.Echo.id, e)}>Recho</a>

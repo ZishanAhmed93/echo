@@ -19,10 +19,23 @@ router.get('/', (req, res) => {
     )
     .then(rechos => {
       res.json(rechos);
-
-
     }); 
   } 
+});
+
+//to get the total # of rechos
+//this is not done
+router.get('/n:id', (req, res) => {
+  if(req.user){
+    models.Rechos.count(
+      {
+        where: {EchoId: req.echo.id}
+      }
+    )
+    .then(rechos => {
+      res.json(rechos);
+    })
+  }
 });
 
 // Get Rechos by its primary key

@@ -27,22 +27,25 @@ class Echos extends Component {
 
   render() {
     return(
-      <div id="Echos">
-      	My Echos
-        {this.state.echos.reverse().map(echo =>
-        	<div key={echo.id} className="echoPost">
-           <div className="tile echoPost">
-            <div className ="tileHeader black54">{echo.User.fullname}<span className ="pull-right"> {moment(echo.createdAt).format('MMM. D')} </span></div>
-              <div className = "tileBody">{echo.subject}</div>
-
-
-
-        	   </div>
+      <div className = "container">
+      	MY ECHOS
+        {this.state.echos.map(echo =>
+          <div key={echo.id}>
+            <div className="tile">
+            <div className ="tileHeader black54"><span className ="pull-right"> {moment(echo.createdAt).format('MMM. d')} </span></div>
+            <div className = "tileBody">{echo.subject}</div>
+            <span> <a className="tileFooter" href="#">Echo</a>
+            <span className = "pull-right">
+            <li className="tileFooter">
+            <Link to={`/echo/${echo.id}`}> View All Comments </Link> 
+            </li>
+             </span>
+            </span>
+            </div>
            </div>
         	)}
       </div>
     )
   }
 }
-
 export default Echos

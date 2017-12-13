@@ -1,11 +1,13 @@
 import React, {Component} from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
+import moment from "moment";
 
 class Echos extends Component {
   constructor() {
     super();
     this.state = {
       echos: [],
+
     }
   }
 
@@ -25,12 +27,18 @@ class Echos extends Component {
 
   render() {
     return(
-      <div>
-      	ECHOS
-        {this.state.echos.map(echo =>
+      <div id="Echos">
+      	My Echos
+        {this.state.echos.reverse().map(echo =>
         	<div key={echo.id} className="echoPost">
-            <li>{echo.subject}</li>
-        	 </div>
+           <div className="tile echoPost">
+            <div className ="tileHeader black54">{echo.User.fullname}<span className ="pull-right"> {moment(echo.createdAt).format('MMM. D')} </span></div>
+              <div className = "tileBody">{echo.subject}</div>
+
+
+
+        	   </div>
+           </div>
         	)}
       </div>
     )

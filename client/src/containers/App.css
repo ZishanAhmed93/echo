@@ -147,3 +147,20 @@ body, #root, #ContentWrap, #Content{
   height: 30px;
   align-self: center;
 }
+
+.tileHeader{
+
+margin-bottom: 16px;
+
+}
+
+.tileBody{
+
+margin-bottom: 16px;
+
+}
+
+.tileFooter{
+color: #bb1014;
+
+}

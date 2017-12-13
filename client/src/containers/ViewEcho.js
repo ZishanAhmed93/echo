@@ -6,7 +6,8 @@ import {
   Link,
   Switch
 } from 'react-router-dom';
-//import ViewComments from './ViewComments';
+import loading from '../loading.svg';
+
 
 class ViewEcho extends Component{
 
@@ -16,10 +17,14 @@ constructor() {
       echo: {},
 			comments: [],
       echofullName: "",
+      user: {},
+      isActive: false,
+      onSubmit: false,
 		};
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.fetchComments = this.fetchComments.bind(this);
+    this.handleFocus = this.handleFocus.bind(this);
 
 }
 
@@ -31,6 +36,20 @@ constructor() {
       );  
 
     this.fetchComments();
+
+
+    fetch('/user',{
+      method: "get",
+      headers: {
+        'Accept' : 'application.json',
+        'Content-type' : 'application.json',
+
+      },
+      credentials: 'same-origin',
+    })
+    .then((response) => response.json())
+      .then((user) => this.setState({user})
+    );
   }
 
   fetchComments() {
@@ -41,11 +60,16 @@ constructor() {
     );    
   }
 
- handleChange(event) {
-    this.setState({reflection: event.target.value});
+  handleChange(event) {
+    this.setState({reflection: event.target.value, isActive:true});
+  }
+  handleFocus(event){
+    this.setState({isActive: true});
   }
 
   handleSubmit(event) {
+    this.setState({onSubmit: true});
+
     event.preventDefault();
     fetch(`/echos/${this.props.match.params.id}/comments`, {
       method: "post",
@@ -66,6 +90,16 @@ constructor() {
     .catch(err => {
       console.log(err.message);
     })
+
+    let commentInput = this.refs.newCommentInput;
+    commentInput.value = "";
+
+    setTimeout(function(){
+      this.setState({
+        onSubmit: false,
+        isActive: false,
+      });
+    }.bind(this), 1800);
   }
 
 render()
@@ -73,8 +107,11 @@ render()
 
     let posterFullName = ""
     if(this.state.echo.User !=  null)
-      posterFullName = this.state.echo.User.fullname
-    
+      posterFullName = this.state.echo.User.fullname;
+    let isActive = this.state.isActive;
+    let onSubmit = this.state.onSubmit;    
+
+    let userFullName = this.state.user.fullname;
 
 
 return(
@@ -87,13 +124,21 @@ return(
       {this.state.echo.subject} {this.state.echo.comments}
     </div>
 
-    <form className="tile mb16 newPostInLine" onSubmit={this.handleSubmit}>
-      <label>
-        Share your comment:
-        <input type='text' name="subject" onChange={this.handleChange} />
-      </label>
-      <input className="btn ctaButton" type='submit' value="Submit" />
-    </form>
+    
+    <div className="tile mb16">
+      {onSubmit ? <img className="loading mb8" src={loading} />
+                : <form className="newPostInLine" onSubmit={this.handleSubmit}>  
+                    <label>
+                      {isActive ? this.state.user.fullname + ': ' 
+                                : "Share your comment: "
+                      }
+                      <input ref="newCommentInput" type='text' name="subject" onChange={this.handleChange} onClick={this.handleFocus}/>
+                    </label>
+                    <input className="btn ctaButton" type='submit' value="Submit" />
+                  </form>            
+      }
+    </div>
+      
       
     <div className = "ViewComments">
     	Comments

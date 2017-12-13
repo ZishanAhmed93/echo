@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './NewEcho.css';
 import moment from "moment";
+import loading from '../loading.svg';
 
 
 class NewEcho extends Component {
@@ -11,6 +12,7 @@ class NewEcho extends Component {
       userId: '',
       user: {},
       isActive: false,
+      onSubmit:false,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -52,8 +54,10 @@ class NewEcho extends Component {
   handleFocus(event){
     this.setState({isActive: true});
   }
-
+  
   handleSubmit(event) {
+    this.setState({onSubmit: true});
+
     event.preventDefault();
     fetch('/echos', {
       method: "post",
@@ -73,10 +77,27 @@ class NewEcho extends Component {
     .catch(err => {
       console.log(err.message);
     })
+
+    let echoInput = this.refs.newEchoInput;
+    echoInput.value = "";
+
+    setTimeout(function(){
+      this.setState({
+        onSubmit: false,
+        isActive: false,
+      });
+    }.bind(this), 1800);
+
   }
+
+    
+    
+    
+  
 
   render() {
     let isActive = this.state.isActive;
+    let onSubmit = this.state.onSubmit;
   
     return(
     <div id="NewEcho" className="tile" >
@@ -85,13 +106,16 @@ class NewEcho extends Component {
                 : <div className = "tileHeader black54 centerText mb8" >What's new today {this.state.user.fullname}?</div>
       }
       
-      <form className="newPostInLine" onSubmit={this.handleSubmit}>  
-        <label> 
-          Subject:
-          <input id="newEchoInput" onclick="isActive()" type='text' name="subject" placeholder="wassup" onChange={this.handleChange} onClick={this.handleFocus} />
-        </label>
-        <input type='submit' value="Submit" className="btn ctaButton" />
-      </form>
+      {onSubmit ? <img className="loading mb8" src={loading} />
+                : <form className="newPostInLine" onSubmit={this.handleSubmit}>   
+                    <label> 
+                      Subject:
+                      <input ref="newEchoInput" onclick="isActive()" type='text' name="subject" placeholder="wassup" onChange={this.handleChange} onClick={this.handleFocus} />
+                    </label>
+                    <input type='submit' value="Submit" className="btn ctaButton" />
+                  </form>
+      }
+
     </div>
     );
   }

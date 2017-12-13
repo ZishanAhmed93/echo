@@ -2,10 +2,9 @@ import React, {Component} from 'react';
 import RegistrationForm from '../components/RegistrationForm'
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
-
-
-
 import Snippet from '../components/Snippet';
+
+import './LandingPage.css';
 
 class LandingPage extends Component {
   constructor(props) {
@@ -70,30 +69,28 @@ class LandingPage extends Component {
     }
 
     return (
-
-        <div className="jumbotron jumbotron-fluid m-0" id="home-background">
-        <div className="container text-center" id="home-content">
-
-        <div className="row">
+      <div id="LandingPage" className="jumbotron jumbotron-fluid m-0">
+        <div className="row">  
           
-          <div className= "col-6">
+          <div className= "col-6 snippetWrap">
+            <div className="tile">
             <Snippet />
+            </div>
           </div>
           
-          <div className = "col-6 tile regWrap">
+          <div className = "col-6 regWrap">
+            <div className="tile">
             <h2>Sign up to project your voice</h2>
             <RegistrationForm 
               handleSubmit={this.handleSubmit}
               handleChange={this.handleChange}
               user={this.state.user}
             />
+            </div>
           </div>
-          </div>
-
+          
         </div>
       </div>
-
- 
     );
   }
 }

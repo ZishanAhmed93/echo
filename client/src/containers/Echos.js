@@ -7,6 +7,7 @@ class Echos extends Component {
     super();
     this.state = {
       echos: [],
+
     }
   }
 
@@ -47,8 +48,4 @@ class Echos extends Component {
     )
   }
 }
-
-        	//<div key={echo.id}>
-           // <li>{echo.subject}</li>
-        	// </div>
 export default Echos

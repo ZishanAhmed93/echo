@@ -24,7 +24,10 @@ const EchosController = {
     //     res.json(echos);
     //   });
     models.Echos.findAll({
-      where: {UserId: req.user.id}
+      where: {UserId: req.user.id},
+      include: [ 
+          { model: models.Users ,}    
+      ]
     })
     .then(echos => {
       res.json(echos);
@@ -35,7 +38,10 @@ const EchosController = {
     //   .then(echo => {
     //     res.json(echo);
     //   });
-    models.Echos.findById(parseInt(req.params.id))
+    models.Echos.findOne(
+      {where: {id: parseInt(req.params.id)},
+        include: [{model: models.Users}]
+      })
       .then(echo => {
         res.json(echo);
       });

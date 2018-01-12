@@ -28,7 +28,7 @@ const controllers = require('./controllers/index');
 app.use('/', controllers);
 
 // Production Build
-app.use(express.static(`../client/build`));
+app.use(express.static(`${__dirname}/../client/build`));
 
 // First, make sure the Database tables and models are in sync
 // then, start up the server and start listening.

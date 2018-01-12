@@ -9,9 +9,6 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Production Build
-app.use(express.static(`../client/build`));
-
 const expressSession = require('express-session');
 const passport = require('./middlewares/authentication');
 
@@ -30,6 +27,8 @@ app.use(passport.session());
 const controllers = require('./controllers/index');
 app.use('/', controllers);
 
+// Production Build
+app.use(express.static(`../client/build`));
 
 // First, make sure the Database tables and models are in sync
 // then, start up the server and start listening.

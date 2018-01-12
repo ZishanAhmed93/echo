@@ -15,10 +15,7 @@
     "dialect": "postgresql"
   },
   "production": {
-    "username": "DB_USERNAME",
-    "password": "DB_PASSWORD",
-    "database": "APP_production",
-    "host": "127.0.0.1",
+    "use_env_variable": `${process.env.DATABASE_URL}`,
     "dialect": "postgresql"
   }
 }

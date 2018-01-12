@@ -18,7 +18,7 @@ const passport = require('./middlewares/authentication');
 // secret protects against fake cookie. 
 // In practice you want a random string to be your secret.
 app.use(expressSession(({
-  secret: 'echoproject',
+  secret: `${process.env.Express_Session_Secret}`,
   resave: false,
   saveUninitialized: true
 })));
